@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html">
+    <h:head>
+        <title>Registration page</title>
+    </h:head>
+    <h:body>
+
+        <h:form>
+
+            <fieldset>
+                <legend>Login Form </legend>
+
+                Login: 
+                <h:inputText value="#{authBean.login}"
+                             id="loginInput">
+                </h:inputText>
+                <br/>
+
+                Password: 
+                <h:inputText value="#{authBean.password}"
+                             id="passwordInput">
+                </h:inputText>
+                <br/>
+
+                <br/>
+
+
+                <h:commandButton value="Submit" 
+                                 action="#{authBean.authenticateUser}"/>
+
+
+                <br/>
+                <h:button value="S'inscrire" outcome="registrationStep1" />
+            </fieldset>
+        </h:form>
+    </h:body>
+</html>
+
