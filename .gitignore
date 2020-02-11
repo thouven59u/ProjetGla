@@ -12,7 +12,7 @@ ProjetGLA-ejb/dist/
 ProjetGLA-war/dist/
 
 
-nbproject/private/
+nbproject/*
 
 ProjetGLA-war/nbproject/private.rar
 
