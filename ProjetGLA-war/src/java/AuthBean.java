@@ -34,6 +34,8 @@ public class AuthBean {
         this.password = password;
     }
     
-    public String authenticateUser(){return "";}
+    public String authenticateUser(){
+        return "";
+    }
     
 }
