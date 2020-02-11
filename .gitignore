@@ -1,3 +1,20 @@
-**/build/
-**/dist/
+ProjetGLA-ejb/build/*
+ProjetGLA-war/build/*
+nbproject/private/*
+ProjetGLA-ejb/nbproject/private/*
+build/*
+dist/*
+ProjetGLA-war/nbproject/private/*
+build/
+
+ProjetGLA-ejb/dist/
+
+ProjetGLA-war/dist/
+
+
+nbproject/private/
+
+ProjetGLA-war/nbproject/private.rar
+
+
 
