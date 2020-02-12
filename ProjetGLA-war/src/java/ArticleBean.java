@@ -87,6 +87,6 @@ public class ArticleBean {
     
     public String createArticle() {
         this.articleBean.addArticle(name, description, price, category, auctionEnd);
-        return "index";
+        return "test";
     }  
 }
