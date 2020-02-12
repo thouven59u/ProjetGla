@@ -3,19 +3,17 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package authentication;
+package article;
 
-import entities.User;
+import entities.Article;
+import java.util.Date;
 import javax.ejb.Local;
 
 /**
  *
- * @author quent
+ * @author Benoît
  */
 @Local
-public interface AuthenticationManager {
-    public User authenticate(String login, String mdp);
-    
-    public void logOut();
-    public User getUser();
+public interface ArticleManager {
+    public void addArticle(String name, String description, double price, String category, Date endAuction);
 }

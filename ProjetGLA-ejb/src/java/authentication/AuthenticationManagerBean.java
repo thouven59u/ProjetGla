@@ -32,7 +32,7 @@ public class AuthenticationManagerBean implements AuthenticationManager {
         Query q = em.createNamedQuery("User.findByLogin");
         q.setParameter("login", login);
         User u = (User) q.getSingleResult();
-        if (u.getPassword().equals(mdp)) {
+        if (BCrypt.checkpw(mdp, u.getPassword())) {
             this.connectedUser.setUser(u);
         }
         else {
@@ -42,10 +42,17 @@ public class AuthenticationManagerBean implements AuthenticationManager {
         return this.connectedUser.getUser();
     }
     
+    
+    
     @Override
     public User getUser() {
         System.out.println("INFO : JE SUIS DANS GET USER");
         return this.connectedUser.getUser();
+    }
+
+    @Override
+    public void logOut() {
+        this.connectedUser.setUser(null);
     }
 
 }
