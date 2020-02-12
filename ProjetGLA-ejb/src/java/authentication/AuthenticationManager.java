@@ -15,5 +15,7 @@ import javax.ejb.Local;
 @Local
 public interface AuthenticationManager {
     public User authenticate(String login, String mdp);
+    
+    public void logOut();
     public User getUser();
 }
