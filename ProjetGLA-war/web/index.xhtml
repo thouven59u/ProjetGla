@@ -3,36 +3,30 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html">
     <h:head>
-        <title>Registration page</title>
+        <title>QuentinLaBrocante</title>
     </h:head>
     <h:body>
-
+        <span style="position: absolute;bottom: 5%;right: 0;left: 0;text-align: center">projet GLA 2020</span>
         <h:form>
-
-            <fieldset>
-                <legend>Login Form </legend>
-
-                Login: 
-                <h:inputText value="#{authBean.login}"
+            <fieldset style="height: 95vh;width: 50%;margin: 0% 25%">
+                <legend style="text-align: center">Login Form </legend>
+                <h1 style="text-align: center; margin-top: 15%">QuentinLaBrocante</h1>
+                <h3 style="width: 70%;margin: 5% 15% 0% 15%">Login : </h3> 
+                <h:inputText style="width: 70%;margin: 0% 15%" value="#{authBean.login}"
                              id="loginInput">
                 </h:inputText>
                 <br/>
-
-                Password: 
-                <h:inputText value="#{authBean.password}"
+                <h3 style="width: 70%;margin: 5% 15% 0% 15%">Password :</h3> 
+                <h:inputText style="width: 70%;margin: 0% 15%" value="#{authBean.password}"
                              id="passwordInput">
                 </h:inputText>
                 <br/>
-
                 <br/>
-
-
-                <h:commandButton value="Submit" 
-                                 action="#{authBean.authenticateUser}"/>
-
-
+                <h:commandButton style="width: 70%;margin: 1% 15% 0% 15%;padding: 1%"
+                    value="Submit" action="#{authBean.authenticateUser}"/>
                 <br/>
-                <h:button value="S'inscrire" outcome="registrationStep1" />
+                <h:button style="width: 70%;margin: 1% 15% 0% 15%;padding: 1%"
+                    value="S'inscrire" outcome="registrationStep1" />
             </fieldset>
         </h:form>
     </h:body>
