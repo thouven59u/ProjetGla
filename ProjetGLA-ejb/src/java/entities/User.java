@@ -1,13 +1,18 @@
 package entities;
 
 import java.io.Serializable; 
+import java.util.Set;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 
 /**
  *
@@ -23,14 +28,22 @@ import javax.persistence.Table;
     )
 })
 public class User implements Serializable{
-    
- @Id
- @GeneratedValue(strategy = GenerationType.AUTO)
- private Long userId;
- 
- private String login;
- 
- private String password;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long userId;
+
+    @OneToMany
+    private Set<Article> articles;
+
+    @Column(unique=true)
+    private String login;
+
+    private String password;
+
+    public User (){
+
+    }
 
     public String getLogin() {
         return login;
@@ -51,8 +64,6 @@ public class User implements Serializable{
     @Override
     public String toString() {
         return "User{" + "userId=" + userId + ", login=" + login + ", password=" + password + '}';
-    }
- 
-    
+    } 
  
 }

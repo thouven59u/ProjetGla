@@ -11,8 +11,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -36,6 +38,9 @@ public class Article implements Serializable{
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     
+    @ManyToOne
+    private User user;
+    
     private String name;
     private String description;
     private double price;
@@ -48,7 +53,8 @@ public class Article implements Serializable{
         
     }
     
-    public Article(String n, String d, double p, String c, Date aE){
+    public Article(User user, String n, String d, double p, String c, Date aE){
+        this.user = user;
         this.name = n;
         this.description = d;
         this.price = p;
@@ -98,6 +104,14 @@ public class Article implements Serializable{
     
     public void setCategory(String c){
         this.category = c;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
     
 }

@@ -7,6 +7,7 @@ import java.util.Date;
 import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
+import authentication.*;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -24,6 +25,9 @@ public class ArticleBean {
     
     @EJB
     private ArticleManager articleBean;
+    
+    @EJB
+    private AuthenticationManager authenticationManager;
     
     private String name, description, category;
     private Date auctionEnd;
@@ -86,7 +90,12 @@ public class ArticleBean {
     }
     
     public String createArticle() {
-        this.articleBean.addArticle(name, description, price, category, auctionEnd);
-        return "index";
-    }  
+        if (authenticationManager.getUser() != null){
+            this.articleBean.addArticle(authenticationManager.getUser(), name, description, price, category, auctionEnd);
+            return "testBean";            
+        } else {
+            return "index";
+        }
+    }
+    
 }

@@ -7,11 +7,6 @@ package article;
 
 import entities.Article;
 import entities.User;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.sql.Connection;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import javax.ejb.Stateless;
@@ -31,8 +26,9 @@ public class ArticleManagerBean implements ArticleManager {
     
     
     @Override
-    public void addArticle(String name, String description, double price, String category, Date endAuction) {
+    public void addArticle(User user, String name, String description, double price, String category, Date endAuction) {
         Article a = new Article();
+        a.setUser(user);
         a.setName(name);
         a.setDescription(description);
         a.setPrice(price);
