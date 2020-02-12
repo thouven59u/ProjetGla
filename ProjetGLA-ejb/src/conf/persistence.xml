@@ -5,6 +5,7 @@
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
     <jta-data-source>jdbc/gla</jta-data-source>
     <class>entities.User</class>
+    <class>entities.Article</class>
     <properties>
       <property name="eclipselink.ddl-generation" value="drop-and-create-tables"/>
       <property name="javax.persistence.schema-generation.database.action" value="drop-and-create"/>
