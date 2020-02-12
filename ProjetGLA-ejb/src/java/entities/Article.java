@@ -24,7 +24,11 @@ import javax.persistence.TemporalType;
             name  = "Article.findByLogin",
             query = "SELECT a from Article a "
                   + "WHERE a.id = :id" 
-    )
+    ),
+     @NamedQuery(
+            name  = "Article.all",
+            query = "SELECT a from Article a "
+    ),
 })
 public class Article implements Serializable{
     
@@ -56,7 +60,7 @@ public class Article implements Serializable{
         return this.id;
     }
     
-    public String name(){
+    public String getName(){
         return this.name;
     }
     

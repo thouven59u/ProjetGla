@@ -7,6 +7,7 @@ package article;
 
 import entities.Article;
 import java.util.Date;
+import java.util.List;
 import javax.ejb.Local;
 
 /**
@@ -16,4 +17,5 @@ import javax.ejb.Local;
 @Local
 public interface ArticleManager {
     public void addArticle(String name, String description, double price, String category, Date endAuction);
+    public List<Article> allArticles();
 }
