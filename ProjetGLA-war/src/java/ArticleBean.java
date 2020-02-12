@@ -90,12 +90,11 @@ public class ArticleBean {
     }
     
     public String createArticle() {
-        if (authenticationManager.getUser() != null){
+        if (authenticationManager.getUser() != null) {
             this.articleBean.addArticle(authenticationManager.getUser(), name, description, price, category, auctionEnd);
-            return "testBean";            
+            return "test";       
         } else {
             return "index";
         }
     }
-    
 }

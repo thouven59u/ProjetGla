@@ -26,6 +26,7 @@ public class RegistrationManagerBean implements RegistrationManager {
         User u = new User();
         u.setLogin(login);
         u.setPassword(mdp);
+        u.setCancelCount(0);
         em.persist(u);    
         return u;
     }

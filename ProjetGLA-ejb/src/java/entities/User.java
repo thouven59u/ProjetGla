@@ -27,7 +27,7 @@ import javax.persistence.UniqueConstraint;
                   + "WHERE u.login = :login" 
     )
 })
-public class User implements Serializable{
+public class User implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -40,9 +40,19 @@ public class User implements Serializable{
     private String login;
 
     private String password;
+    
+    private int cancelCount;
 
     public User (){
+        
+    }    
 
+    public int getCancelCount() {
+        return cancelCount;
+    }
+
+    public void setCancelCount(int cancelCount) {
+        this.cancelCount = cancelCount;
     }
 
     public String getLogin() {

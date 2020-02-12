@@ -45,16 +45,17 @@ and open the template in the editor.
                 Ending date of the auction: 
                 <h:inputText value="#{articleBean.auctionEnd}"
                              id="auctionEndInput">
-                    <f:convertDateTime pattern="yyyy-MM-dd"/>
+                    <f:convertDateTime pattern="yyyy-MM-dd hh:mm"/>
                 </h:inputText>
                 <br/>
                 
                 <br/>
                     
 
-                <h:commandButton value="Next" 
+                <h:commandButton value="Ajouter article" 
                                  action="#{articleBean.createArticle()}"/>
-
+                <h:button value="Retour à mon compte"
+                                 outcome="test"  />
 
             </fieldset>
         </h:form>
