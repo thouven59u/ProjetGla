@@ -19,7 +19,7 @@
                     </tr>
                 </thead>
                 <h:dataTable var="row" style="width: 100%"
-                             value="#{artcileBean.allArticles()}"
+                             value="#{listeArticleBean.allArticles()}"
                              border="1" >
                     <h:column>
                         <f:facet name="header">ID</f:facet>
@@ -27,23 +27,23 @@
                     </h:column>
                     <h:column>
                         <f:facet name="header">Nom</f:facet>
-                        #{row.Nom}
+                        #{row.name}
                     </h:column>
                     <h:column>
                         <f:facet name="header">Description</f:facet>
-                        #{row.Description}
+                        #{row.category}
                     </h:column>
                     <h:column>
                         <f:facet name="header">Prix de depart</f:facet>
-                        #{row.prix}
+                        #{row.price}
                     </h:column>
                     <h:column>
                         <f:facet name="header">Enchères Actuel</f:facet>
-                        #{row.enchere}
+                        #{row.auctionEnd}
                     </h:column>
                     <h:column>
                         <f:facet name="header">User</f:facet>
-                        #{row.utilisateur}
+                        
                     </h:column>
                 </h:dataTable>
             </table>

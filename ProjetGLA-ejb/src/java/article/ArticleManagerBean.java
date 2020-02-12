@@ -7,7 +7,13 @@ package article;
 
 import entities.Article;
 import entities.User;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.sql.Connection;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -33,6 +39,12 @@ public class ArticleManagerBean implements ArticleManager {
         a.setCategory(category);
         a.setAuctionEnd(endAuction);
         em.persist(a);
+    }
+    @Override
+    public List<Article> allArticles(){
+        Query q = em.createNamedQuery("Article.all");
+        List<Article> list = (List<Article>) q.getResultList();
+        return list;
     }
 
 }
