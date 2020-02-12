@@ -1,4 +1,5 @@
 
+import authentication.BCrypt;
 import authentication.RegistrationManager;
 import authentication.RegistrationManagerBean;
 import entities.User;
