@@ -62,7 +62,8 @@ public class RegistrationBean {
     
     public String registerLogin() {
         if(this.password.equals(this.conf) ){
-            User u = this.registrationBean.register(this.login, this.password);
+            User u = this.registrationBean.register(this.login, 
+                    BCrypt.hashpw(this.password, BCrypt.gensalt(12)));
             return "index";
         }else{
             erreur = "!!!!!!!!!!!!!!!!!! erreur !!!!!!!!!!!!!!!!!!";

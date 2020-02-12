@@ -32,7 +32,7 @@ public class AuthenticationManagerBean implements AuthenticationManager {
         Query q = em.createNamedQuery("User.findByLogin");
         q.setParameter("login", login);
         User u = (User) q.getSingleResult();
-        if (u.getPassword().equals(mdp)) {
+        if (BCrypt.checkpw(mdp, u.getPassword())) {
             this.connectedUser.setUser(u);
         }
         else {
