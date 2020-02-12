@@ -7,32 +7,29 @@
     <h:head>
         <title>Persons</title>
     </h:head>
-    <h:body>
-
+ <h:body>
+        <span style="position: absolute;bottom: 5%;right: 0;left: 0;text-align: center">projet GLA 2020</span>
         <h:form>
-
-            <fieldset>
-                <legend>Registration Form </legend>
-
-                Login: 
-                <h:inputText value="#{registrationBean.login}"
+            <fieldset style="height: 95vh;width: 50%;margin: 0% 25%">
+                <legend style="text-align: center">Sign in Form </legend>
+                <h1 style="text-align: center; margin-top: 15%">QuentinLaBrocante</h1>
+                <h3 style="width: 70%;margin: 5% 15% 0% 15%">Login : </h3> 
+                <h:inputText style="width: 70%;margin: 0% 15%" value="#{registrationBean.login}"
                              id="loginInput">
                 </h:inputText>
                 <br/>
-
-                Password: 
-                <h:inputText value="#{registrationBean.password}"
+                <h3 style="width: 70%;margin: 5% 15% 0% 15%">Password :</h3> 
+                <h:inputSecret style="width: 70%;margin: 0% 15%" value="#{registrationBean.password}"
                              id="passwordInput">
-                </h:inputText>
+                </h:inputSecret>
+                <h3 style="width: 70%;margin: 5% 15% 0% 15%">Con :</h3> 
+                <h:inputSecret style="width: 70%;margin: 0% 15%" value="#{registrationBean.password}"
+                             id="confpasswordInput">
+                </h:inputSecret>
                 <br/>
-
                 <br/>
-
-
-                <h:commandButton value="Next" 
-                                 action="#{registrationBean.registerLogin()}"/>
-
-
+                <h:commandButton style="width: 70%;margin: 1% 15% 0% 15%;padding: 1%"
+                    value="sign in" action="#{registrationBean.registerLogin}"/>
             </fieldset>
         </h:form>
     </h:body>

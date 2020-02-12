@@ -1,0 +1,62 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:c="http://java.sun.com/jsp/jstl/core">
+    <head>
+        <title>QuentinLaBrocante</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </head>
+    <body>
+        <div style="width: 70%;text-align: center;display: inline-block;float: left">
+            <a href="#" style="float: left"> Déconexion</a>
+            <h1 style="text-align: center"> Rocket SQL</h1>
+            <img style="width: 40%;margin: 0% 20%" src="https://cdns.iconmonstr.com/wp-content/assets/preview/2014/240/iconmonstr-rocket-19.png"/>
+            <p>#{article.description}</p>
+            <table style="width: 80%;margin: 0% 10%;">
+                <thead>
+                    <tr>
+                        <th colspan="2" style="background-color: black; color: white">Enchère</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Prix de départ</td>
+                        <td>Enchère actuel</td>
+                    </tr>
+                     <tr>
+                        <td>15 €</td>
+                        <td>35 €</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div style="width: 30%;height: 90vh;display: inline-block;padding: 0">
+                <h:form>
+                    <fieldset>
+                        <legend>Nouvelle enchère</legend>
+                        <p style="margin:0">somme</p>
+                        <h:inputText value="#{authBean.login}"
+                                     id="loginInput">
+                        </h:inputText>
+                        <br/>
+                        <h:commandButton value="Faire une enchère"  style="float: right"
+                                         action="#{authBean.authenticateUser}"/>
+                        <br/>
+                    </fieldset>
+                </h:form>
+            <fieldset style="height: 80vh;">
+                <legend> Enchere</legend>
+                <h3>log :</h3>
+                
+            </fieldset>
+            
+        </div>
+    </body>
+    <style>
+        table, th, td {
+            border: 1px solid black;
+        }
+    </style>
+</html>

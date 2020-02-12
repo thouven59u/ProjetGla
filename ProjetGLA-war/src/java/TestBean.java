@@ -33,11 +33,18 @@ public class TestBean {
         u = this.cUsr.getUser();
         System.out.println("INFO : " + u);
     }
+    public String logout() {
+        return "index";
+    }
     
     public String getUser() { 
         return u.toString();
         
     }
     
+    public String getLogin() {
+        return u.getLogin();
+    }
     
+     
 }

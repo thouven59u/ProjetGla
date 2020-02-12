@@ -1,12 +1,59 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://java.sun.com/jsf/html">
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:c="http://java.sun.com/jsp/jstl/core">
     <h:head>
-        <title>Registration page</title>
+        <title></title>
     </h:head>
     <h:body>
-        #{testBean.user}
+        <div style="width: 30%;height: 100vh;display: inline-block;padding: 0; float: left">
+            <img width="100%" src="https://img.pngio.com/men-profile-icon-png-image-free-download-searchpngcom-png-man-grey-715_657.png"/>
+            <div style="width: 70%;margin: 1% 15% 0% 15%;padding: 1%">
+                <h3>Login : #{testBean.login}</h3>
+                <h:form>
+                    <h:commandButton 
+                    value="Deconexion" action="#{testBean.logout}"/> 
+                    <h:button style="width: 100%;"
+                        value="Afficher la liste des Article" outcome="listeArticle" />
+                </h:form>
+            </div>
+        </div>
+        <div style="width: 68%;height: 90vh;display: inline-block;padding: 0">
+            <fieldset style="height: 80vh;">
+                <legend> Vos Enchère</legend>
+                <h:form>
+                    <table style="width: 100%;margin: 0%;">
+                        <h:dataTable var="row" style="width: 100%"
+                                     value=""
+                                     border="1" >
+                            <h:column>
+                                <f:facet name="header">ID</f:facet>
+
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">Nom</f:facet>
+
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">Prix de depart</f:facet>
+
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">Enchères Final</f:facet>
+
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">Option</f:facet>
+                                <h:button style="width: 100%;" value="Annuler"/>
+                            </h:column>
+                        </h:dataTable>
+                    </table>
+                    <h:button style="width: 100%;" value="Valider"/>
+                </h:form>
+            </fieldset>
+        </div>
     </h:body>
 </html>
 
