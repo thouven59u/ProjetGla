@@ -43,11 +43,11 @@
                     </h:column>
                     <h:column>
                         <f:facet name="header">User</f:facet>
-                        #{row.user}                        
+                        #{row.user.login}                       
                     </h:column>                    
                     <h:column>
                         <f:facet name="header">Supprimer son article</f:facet>                        
-                        <h:commandButton rendered="#{listeArticleBean.verifCreateur(row.id)}" value="Supprimer son article" action="#{listeArticleBean.delArticle(row.id)}"/>                        
+                        <h:commandButton rendered="#{listeArticleBean.verifCreateur(row.id)}" value="Supprimer son article" action="#{listeArticleBean.delArticle(row.id)}"/>
                     </h:column>
                 </h:dataTable>
             </table>
