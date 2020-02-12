@@ -1,4 +1,7 @@
 
+import authentication.AuthenticationManager;
+import entities.User;
+import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
 
@@ -15,6 +18,9 @@ import javax.inject.Named;
 @Named(value = "authBean")
 @RequestScoped
 public class AuthBean {
+    
+    @EJB
+    private AuthenticationManager authManager;
     
     private String login, password;
 
@@ -35,7 +41,9 @@ public class AuthBean {
     }
     
     public String authenticateUser(){
-        return "";
+        User u = authManager.authenticate(this.login, this.password);
+        System.out.println("INFOOO"+u+ "\n\n\n");
+        return "test";
     }
     
 }

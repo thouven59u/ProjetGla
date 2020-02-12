@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 /**
@@ -13,6 +15,13 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name= "USERS")
+@NamedQueries ({
+    @NamedQuery(
+            name  = "User.findByLogin",
+            query = "SELECT u from User u "
+                  + "WHERE u.login = :login" 
+    )
+})
 public class User implements Serializable{
     
  @Id
@@ -38,7 +47,12 @@ public class User implements Serializable{
     public void setPassword(String password) {
         this.password = password;
     }
- 
 
+    @Override
+    public String toString() {
+        return "User{" + "userId=" + userId + ", login=" + login + ", password=" + password + '}';
+    }
+ 
+    
  
 }
