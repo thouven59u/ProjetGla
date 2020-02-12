@@ -74,6 +74,10 @@ public class User implements Serializable {
     @Override
     public String toString() {
         return "User{" + "userId=" + userId + ", login=" + login + ", password=" + password + '}';
-    } 
+    }
+
+    public Long getUserId() {
+        return userId;
+    }
  
 }

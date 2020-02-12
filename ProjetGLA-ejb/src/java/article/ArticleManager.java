@@ -5,6 +5,7 @@
  */
 package article;
 
+import authentication.AuthenticationManager;
 import entities.Article;
 import entities.User;
 import java.util.Date;
@@ -19,4 +20,7 @@ import javax.ejb.Local;
 public interface ArticleManager {
     public void addArticle(User user, String name, String description, double price, String category, Date endAuction);
     public List<Article> allArticles();
+    public boolean delArticle(long id);
+    public Article getArticleById(long id);
+    public AuthenticationManager getAuthenticationManager();
 }

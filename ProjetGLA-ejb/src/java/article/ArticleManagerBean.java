@@ -9,10 +9,12 @@ import entities.Article;
 import entities.User;
 import java.util.Date;
 import java.util.List;
+import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import authentication.*;
 
 /**
  *
@@ -23,6 +25,9 @@ public class ArticleManagerBean implements ArticleManager {
 
     @PersistenceContext(unitName = "truc-PU")
     private EntityManager em;
+    
+    @EJB
+    private AuthenticationManager authenticationManager;
     
     
     @Override
@@ -41,6 +46,24 @@ public class ArticleManagerBean implements ArticleManager {
         Query q = em.createNamedQuery("Article.all");
         List<Article> list = (List<Article>) q.getResultList();
         return list;
+    }
+
+    @Override
+    public boolean delArticle(long id) {
+        Query q = em.createNamedQuery("Article.delById");
+        q.setParameter("id", id);
+        return q.executeUpdate() == 1 ? true : false;
+    }
+    
+    @Override
+    public Article getArticleById(long id){
+        Query q = em.createNamedQuery("Article.find");
+        q.setParameter("id", id);
+        return (Article) q.getSingleResult();
+    }
+
+    public AuthenticationManager getAuthenticationManager() {
+        return authenticationManager;
     }
 
 }

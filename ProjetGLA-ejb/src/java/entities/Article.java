@@ -23,13 +23,17 @@ import javax.persistence.TemporalType;
 @Table(name= "ARTICLES")
 @NamedQueries ({
     @NamedQuery(
-            name  = "Article.findByLogin",
+            name  = "Article.find",
             query = "SELECT a from Article a "
                   + "WHERE a.id = :id" 
     ),
      @NamedQuery(
             name  = "Article.all",
             query = "SELECT a from Article a "
+    ),
+     @NamedQuery(
+            name  = "Article.delById",
+            query = "DELETE FROM Article a WHERE a.id = :id "
     ),
 })
 public class Article implements Serializable{
