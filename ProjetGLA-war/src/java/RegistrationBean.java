@@ -23,11 +23,13 @@ public class RegistrationBean {
     @EJB
     private RegistrationManager registrationBean;
     
-    private String login, password;
+    private String login, password, conf, erreur;
 
     public RegistrationBean() {
         this.login = "";
         this.password = "";
+        this.conf = "";
+        this.erreur = "";
     }
 
     public String getLogin() {
@@ -46,8 +48,25 @@ public class RegistrationBean {
         this.password = password;
     }
     
+    public String getErreur() {
+        return erreur;
+    }
+    
+    public String getConf(){
+        return conf;
+    }
+    
+    public void setConf(String conf) {
+        this.conf = conf;
+    }
+    
     public String registerLogin() {
-        User u = this.registrationBean.register(this.login, this.password);
-        return "index";
+        if(this.password.equals(this.conf) ){
+            User u = this.registrationBean.register(this.login, this.password);
+            return "index";
+        }else{
+            erreur = "!!!!!!!!!!!!!!!!!! erreur !!!!!!!!!!!!!!!!!!";
+            return null;
+        }
     }
 }
