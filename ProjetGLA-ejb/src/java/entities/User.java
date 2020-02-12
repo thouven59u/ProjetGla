@@ -31,6 +31,16 @@ public class User implements Serializable{
  private String login;
  
  private String password;
+ 
+ private int cancelCount;
+
+    public int getCancelCount() {
+        return cancelCount;
+    }
+
+    public void setCancelCount(int cancelCount) {
+        this.cancelCount = cancelCount;
+    }
 
     public String getLogin() {
         return login;
