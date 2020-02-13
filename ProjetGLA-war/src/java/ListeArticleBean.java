@@ -24,14 +24,31 @@ public class ListeArticleBean {
     
     @EJB
     private ArticleManager articleBean;
-
+    private double price;
+    
     public List<Article> allArticles(){
         return this.articleBean.allArticles();
     }
     
-    public boolean delArticle(long id){
-        return articleBean.delArticle(id);
+    public String delArticle(long id){
+        
+        articleBean.delArticle(id);
+        return "listeArticle";
     }
+    public void Encherir(long id){
+        System.out.println("ListeArticleBean.Encherir()"+ price);
+        this.price = 0;
+    }
+    
+    
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+    
     
     public boolean verifCreateur (long idArticle){
         if (articleBean.getAuthenticationManager().getUser() != null){

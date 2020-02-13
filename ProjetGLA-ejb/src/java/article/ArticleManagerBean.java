@@ -15,6 +15,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import authentication.*;
+import javax.persistence.TemporalType;
 
 /**
  *
@@ -43,7 +44,9 @@ public class ArticleManagerBean implements ArticleManager {
     }
     @Override
     public List<Article> allArticles(){
+        Date now = new Date();
         Query q = em.createNamedQuery("Article.all");
+        q.setParameter("today",now,TemporalType.DATE);
         List<Article> list = (List<Article>) q.getResultList();
         return list;
     }
