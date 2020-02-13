@@ -6,6 +6,7 @@ import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
 import authentication.*;
 import entities.Article;
+import entities.User;
 import java.util.Objects;
 import javax.faces.application.FacesMessage;
 import javax.faces.component.UIComponent;
@@ -25,7 +26,8 @@ import javax.faces.validator.ValidatorException;
 @Named(value = "listeArticleBean")
 @RequestScoped
 public class ListeArticleBean {
-    
+    @EJB
+    private AuthenticationManager cUsr;
     @EJB
     private ArticleManager articleBean;
     private double price;
@@ -36,6 +38,11 @@ public class ListeArticleBean {
     
     public List<Article> allArticles(){
         return this.articleBean.allArticles();
+    }
+    
+    public List<Article> myArticles(){
+        User u = this.cUsr.getUser();
+        return this.articleBean.myArticles(u.getUserId());
     }
     
     public String delArticle(long id){

@@ -53,6 +53,17 @@ public class ArticleManagerBean implements ArticleManager {
         List<Article> list = (List<Article>) q.getResultList();
         return list;
     }
+    
+    @Override
+    public List<Article> myArticles(long id){
+        Query q = em.createNamedQuery("User.findById");
+        q.setParameter("id", id);
+        User u = (User) q.getSingleResult();
+        Query q2 = em.createNamedQuery("Article.byUser");
+        q2.setParameter("user",u);
+        List<Article> list = (List<Article>) q2.getResultList();
+        return list;
+    }
 
     @Override
     public boolean delArticle(long id) {

@@ -33,6 +33,11 @@ import javax.persistence.TemporalType;
                   + "WHERE a.auctionEnd >= :today "
     ),
      @NamedQuery(
+            name  = "Article.byUser",
+            query = "SELECT a from Article a "
+                  + "WHERE a.user = :user "
+    ),
+     @NamedQuery(
             name  = "Article.delById",
             query = "DELETE FROM Article a WHERE a.id = :id "
     )

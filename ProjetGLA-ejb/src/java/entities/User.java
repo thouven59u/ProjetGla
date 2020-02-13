@@ -25,8 +25,14 @@ import javax.persistence.UniqueConstraint;
             name  = "User.findByLogin",
             query = "SELECT u from User u "
                   + "WHERE u.login = :login" 
+    ),
+    @NamedQuery(
+            name  = "User.findById",
+            query = "SELECT u from User u "
+                  + "WHERE u.userId = :id" 
     )
 })
+
 public class User implements Serializable {
 
     @Id

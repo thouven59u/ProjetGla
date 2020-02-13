@@ -13,12 +13,14 @@
             <div style="width: 70%;margin: 1% 15% 0% 15%;padding: 1%">
                 <h3>Login : #{testBean.login}</h3>
                 <h:form>
-                    <h:commandButton 
+                    <h:commandButton style="width: 100%;"
                     value="Deconexion" action="#{testBean.logout}"/> 
-                    <h:button style="width: 100%;"
-                        value="Afficher la liste des enchères" outcome="listeArticle" />
+                    <h:commandButton  style="width: 100%;"
+                        value="Afficher la liste de mes enchères" action="#{testBean.myArt}"  />
                     <h:button style="width: 100%;"
                               value="Ajouter un article" outcome="addArticle" />
+                    <h:button style="width: 100%;"
+                        value="Afficher la liste des enchères" outcome="listeArticle" />
                 </h:form>
             </div>
         </div>

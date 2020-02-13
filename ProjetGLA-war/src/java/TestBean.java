@@ -36,6 +36,9 @@ public class TestBean {
     public String logout() {
         return "index";
     }
+    public String myArt() {
+        return "mesArticle";
+    }
     
     public String getUser() { 
         return u.toString();

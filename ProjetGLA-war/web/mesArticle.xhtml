@@ -1,0 +1,65 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:c="http://java.sun.com/jsp/jstl/core">
+    <h:head>
+        <title>QuentinLaBrocante</title>
+    </h:head>
+    <h:body>
+
+        <h3>Liste des articles <a href="test.xhtml" style="float: right;padding-left:1%"> MonCompte</a><a href="index.xhtml" style="float: right"> Déconexion</a> </h3>
+         
+        <h:form>
+            <table style="width: 100%;margin: 0%;">
+                <thead>
+                    <tr>
+                        <th colspan="2" style="background-color: black; color: white">Enchère</th>
+                    </tr>
+                </thead>
+                <h:dataTable var="row" style="width: 100%"
+                             value="#{listeArticleBean.myArticles()}"
+                             border="1" >
+                    <h:column>
+                        <f:facet name="header">ID</f:facet>
+                        #{row.id}
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">Nom</f:facet>
+                        #{row.name}
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">Description</f:facet>
+                        #{row.category}
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">Prix de depart</f:facet>
+                        #{row.price}
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">Enchères Actuelles</f:facet>
+                        #{row.auctionEnd}
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">User</f:facet>
+                        #{row.user.login}                       
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">Faire une enchere</f:facet>
+                        <h:form>
+                            Price: 
+                            <h:inputText value="#{listeArticleBean.price}" id="priceInput">
+                            </h:inputText>
+                            <h:commandButton value="encherir" action="#{listeArticleBean.Encherir(row.id)}"/>
+                        </h:form>                       
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">Supprimer son article</f:facet>                        
+                        <h:commandButton rendered="#{listeArticleBean.verifCreateur(row.id)}" value="Supprimer son article" action="#{listeArticleBean.delArticle(row.id)}"/>
+                    </h:column>
+                </h:dataTable>
+            </table>
+        </h:form>
+    </h:body>
+</html>

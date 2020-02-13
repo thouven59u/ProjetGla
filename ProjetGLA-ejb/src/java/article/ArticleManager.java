@@ -20,6 +20,7 @@ import javax.ejb.Local;
 public interface ArticleManager {
     public void addArticle(User user, String name, String description, double price, String category, Date endAuction);
     public List<Article> allArticles();
+    public List<Article> myArticles(long id);
     public boolean delArticle(long id);
     public Article getArticleById(long id);
     public void modifyPrice(long idArticle, long idUser, double price);
