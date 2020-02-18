@@ -46,7 +46,7 @@ public class AuthenticationManagerBean implements AuthenticationManager {
     
     @Override
     public User getUser() {
-        System.out.println("INFO : JE SUIS DANS GET USER");
+        //System.out.println("INFO : JE SUIS DANS GET USER");
         return this.connectedUser.getUser();
     }
 

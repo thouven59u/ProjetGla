@@ -7,6 +7,10 @@ import javax.inject.Named;
 import authentication.*;
 import entities.Article;
 import java.util.Objects;
+import javax.faces.application.FacesMessage;
+import javax.faces.component.UIComponent;
+import javax.faces.context.FacesContext;
+import javax.faces.validator.ValidatorException;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -26,6 +30,10 @@ public class ListeArticleBean {
     private ArticleManager articleBean;
     private double price;
     
+    public ListeArticleBean(){
+        this.price = 0.0;
+    }
+    
     public List<Article> allArticles(){
         return this.articleBean.allArticles();
     }
@@ -35,11 +43,16 @@ public class ListeArticleBean {
         articleBean.delArticle(id);
         return "listeArticle";
     }
-    public void Encherir(long id){
-        System.out.println("ListeArticleBean.Encherir()"+ price);
-        this.price = 0;
-    }
     
+    public String encherir(long id){
+        System.out.println("ListeArticleBean.encherir() "+ this.price);
+        try{
+            this.articleBean.modifyPrice(id, this.price);
+        }catch(Exception e){
+            e.getStackTrace();
+        }
+        return "listeArticle";
+    }
     
     public double getPrice() {
         return price;
@@ -52,12 +65,21 @@ public class ListeArticleBean {
     
     public boolean verifCreateur (long idArticle){
         if (articleBean.getAuthenticationManager().getUser() != null){
-            System.out.println(articleBean.getAuthenticationManager().getUser());
-            System.out.println(idArticle);
-            System.out.println(articleBean.getArticleById(idArticle).getUser());
-            return articleBean.getAuthenticationManager().getUser().getUserId() == articleBean.getArticleById(idArticle).getUser().getUserId();
+            //System.out.println(articleBean.getAuthenticationManager().getUser());
+            //System.out.println(idArticle);
+            //System.out.println(articleBean.getArticleById(idArticle).getUser());
+            return articleBean.getAuthenticationManager().getUser().getUserId().equals(articleBean.getArticleById(idArticle).getUser().getUserId());
         } else {
             return false;
         }
+    }
+    
+    public void check(FacesContext context, UIComponent comp, Object value) throws ValidatorException{
+        Article a = (Article) articleBean.getArticleById((long)comp.getAttributes().get("idRow"));
+        System.out.println(a.getPrice()+" \\ "+value);
+        if(a.getPrice() > (double)value){
+            throw new ValidatorException(new FacesMessage("L'enchère doit être supérieur à l'enchère minimum actuelle"));
+        }
+        System.out.println("OK EXCEPTION ENCHERE");
     }
 }

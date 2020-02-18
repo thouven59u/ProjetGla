@@ -64,6 +64,14 @@ public class ArticleManagerBean implements ArticleManager {
         q.setParameter("id", id);
         return (Article) q.getSingleResult();
     }
+    
+    @Override
+    public void modifyPrice(long id, double price){
+        Query q = em.createNamedQuery("Article.find");
+        q.setParameter("id",id);
+        Article a = (Article) q.getSingleResult();
+        a.setPrice(price);
+    }
 
     public AuthenticationManager getAuthenticationManager() {
         return authenticationManager;

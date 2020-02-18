@@ -35,7 +35,7 @@ import javax.persistence.TemporalType;
      @NamedQuery(
             name  = "Article.delById",
             query = "DELETE FROM Article a WHERE a.id = :id "
-    ),
+    )
 })
 public class Article implements Serializable{
     
