@@ -30,6 +30,11 @@ import javax.persistence.Table;
             name  = "Users_Articles.findArticle",
             query = "SELECT a FROM UsersArticles a "
                   + "WHERE a.articles_Id = :articleId"
+    ),
+    @NamedQuery(
+            name  = "Users_Articles.ArticleWin",
+            query = "SELECT a FROM UsersArticles a "
+                  + "WHERE a.user_UserId = :uId "
     )
 })
 public class UsersArticles {

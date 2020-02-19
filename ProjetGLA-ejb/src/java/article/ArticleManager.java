@@ -26,5 +26,6 @@ public interface ArticleManager {
     public Article getArticleById(long id);
     public void modifyPrice(long idArticle, long idUser, double price);
     public UsersArticles findBestBet(long id);
+    public List<Article> articleWin(long idUser);
     public AuthenticationManager getAuthenticationManager();
 }

@@ -16,6 +16,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import authentication.*;
 import entities.UsersArticles;
+import java.util.ArrayList;
 import javax.ejb.EJBException;
 import javax.persistence.NoResultException;
 import javax.persistence.TemporalType;
@@ -115,6 +116,22 @@ public class ArticleManagerBean implements ArticleManager {
 
     public AuthenticationManager getAuthenticationManager() {
         return authenticationManager;
+    }
+    
+    	    @Override
+    public List<Article> articleWin(long idUser) {
+        Query q = em.createNamedQuery("Users_Articles.ArticleWin");
+        q.setParameter("uId",idUser);
+        List<UsersArticles> list = (List<UsersArticles>) q.getResultList();
+        List<Article> listA = new ArrayList<Article>();
+        Date d= new Date();
+        for (UsersArticles usersArticles : list) {
+            Article a =getArticleById(usersArticles.getArticles_Id());
+            if(a.getAuctionEnd().getTime() < d.getTime()){
+                listA.add(a);
+            }
+        }
+        return listA;
     }
 
 }

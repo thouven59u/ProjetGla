@@ -30,19 +30,19 @@
                 <h:form>
                     <table style="width: 100%;margin: 0%;">
                         <h:dataTable var="row" style="width: 100%"
-                                     value=""
+                                     value="#{testBean.articelWin()}"
                                      border="1" >
                             <h:column>
                                 <f:facet name="header">ID</f:facet>
-
+                                #{row.id}
                             </h:column>
                             <h:column>
                                 <f:facet name="header">Nom</f:facet>
-
+                                #{row.name}
                             </h:column>
                             <h:column>
                                 <f:facet name="header">Prix de depart</f:facet>
-
+                                #{row.price}
                             </h:column>
                             <h:column>
                                 <f:facet name="header">Enchères Final</f:facet>
