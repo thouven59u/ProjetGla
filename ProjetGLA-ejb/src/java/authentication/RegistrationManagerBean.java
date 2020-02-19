@@ -21,11 +21,14 @@ public class RegistrationManagerBean implements RegistrationManager {
     private EntityManager em;
     
     @Override
-    public User register(String login, String mdp) {
-        
+    public User register(String login, String mdp, String nom, String prenom, String adresse, String iban) {
         User u = new User();
         u.setLogin(login);
         u.setPassword(mdp);
+        u.setNom(nom);
+        u.setPrenom(prenom);
+        u.setAdresse(adresse);
+        u.setIban(iban);
         u.setCancelCount(0);
         em.persist(u);    
         return u;

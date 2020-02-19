@@ -91,7 +91,7 @@ public class ListeArticleBean {
     public void check(FacesContext context, UIComponent comp, Object value) throws ValidatorException{
         Article a = (Article) articleBean.getArticleById((long)comp.getAttributes().get("idRow"));
         //System.out.println(a.getPrice()+" \\ "+value);
-        if(a.getPrice() > (double)value){
+        if(a.getPrice() >= (double)value){
             throw new ValidatorException(new FacesMessage("L'enchère doit être supérieur à l'enchère minimum actuelle"));
         }
     }

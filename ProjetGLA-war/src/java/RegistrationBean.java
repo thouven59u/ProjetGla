@@ -24,13 +24,17 @@ public class RegistrationBean {
     @EJB
     private RegistrationManager registrationBean;
     
-    private String login, password, conf, erreur;
+    private String login, password, conf, erreur, nom, prenom, adresse, iban;
 
     public RegistrationBean() {
         this.login = "";
         this.password = "";
         this.conf = "";
         this.erreur = "";
+        this.nom = "";
+        this.prenom = "";
+        this.adresse = "";
+        this.iban = "";
     }
 
     public String getLogin() {
@@ -60,11 +64,46 @@ public class RegistrationBean {
     public void setConf(String conf) {
         this.conf = conf;
     }
+
+    public String getNom() {
+        return nom;
+    }
+
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
+
+    public String getPrenom() {
+        return prenom;
+    }
+
+    public void setPrenom(String prenom) {
+        this.prenom = prenom;
+    }
+
+    public String getAdresse() {
+        return adresse;
+    }
+
+    public void setAdresse(String adresse) {
+        this.adresse = adresse;
+    }
+
+    public String getIban() {
+        return iban;
+    }
+
+    public void setIban(String iban) {
+        this.iban = iban;
+    }
+    
+    
     
     public String registerLogin() {
         if(this.password.equals(this.conf) ){
             User u = this.registrationBean.register(this.login, 
-                    BCrypt.hashpw(this.password, BCrypt.gensalt(12)));
+                    BCrypt.hashpw(this.password, BCrypt.gensalt(12)),
+                    this.nom, this.prenom, this.adresse, this.iban);
             return "index";
         }else{
             erreur = "!!!!!!!!!!!!!!!!!! erreur !!!!!!!!!!!!!!!!!!";

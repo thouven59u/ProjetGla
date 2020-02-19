@@ -45,7 +45,7 @@ public class User implements Serializable {
     @Column(unique=true)
     private String login;
 
-    private String password;
+    private String password, nom, prenom, adresse, iban;
     
     private int cancelCount;
 
@@ -77,6 +77,38 @@ public class User implements Serializable {
         this.password = password;
     }
 
+    public String getNom() {
+        return nom;
+    }
+
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
+
+    public String getPrenom() {
+        return prenom;
+    }
+
+    public void setPrenom(String prenom) {
+        this.prenom = prenom;
+    }
+
+    public String getAdresse() {
+        return adresse;
+    }
+
+    public void setAdresse(String adresse) {
+        this.adresse = adresse;
+    }
+
+    public String getIban() {
+        return iban;
+    }
+
+    public void setIban(String iban) {
+        this.iban = iban;
+    }
+    
     @Override
     public String toString() {
         return "User{" + "userId=" + userId + ", login=" + login + ", password=" + password + '}';
