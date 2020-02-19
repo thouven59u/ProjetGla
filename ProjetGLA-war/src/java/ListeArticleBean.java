@@ -7,7 +7,7 @@ import javax.inject.Named;
 import authentication.*;
 import entities.Article;
 import entities.User;
-import java.util.Objects;
+import java.util.Date;
 import javax.faces.application.FacesMessage;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
@@ -72,6 +72,16 @@ public class ListeArticleBean {
             //System.out.println(idArticle);
             //System.out.println(articleBean.getArticleById(idArticle).getUser());
             return articleBean.getAuthenticationManager().getUser().getUserId().equals(articleBean.getArticleById(idArticle).getUser().getUserId());
+        } else {
+            return false;
+        }
+    }
+    
+    public boolean verifDate (Date dateArticle){
+        if (articleBean.getAuthenticationManager().getUser() != null){
+            System.out.print(dateArticle);
+            Date d= new Date();  
+            return d.getTime() <= dateArticle.getTime() ;
         } else {
             return false;
         }

@@ -42,6 +42,10 @@
                         #{row.auctionEnd}
                     </h:column>
                     <h:column>
+                        <f:facet name="header">Date de fin</f:facet>
+                        #{row.auctionEnd}
+                    </h:column>
+                    <h:column>
                         <f:facet name="header">User</f:facet>
                         #{row.user.login}                       
                     </h:column>
@@ -52,7 +56,7 @@
                             <h:inputText value="#{listeArticleBean.price}" id="priceInput" validator="#{listeArticleBean.check}">
                                 <f:attribute name="idRow" value="#{row.id}"></f:attribute>
                             </h:inputText>
-                            <h:commandButton value="encherir" action="#{listeArticleBean.encherir(row.id)}"/>
+                            <h:commandButton rendered="#{listeArticleBean.verifDate(row.auctionEnd)}" value="encherir" action="#{listeArticleBean.encherir(row.id)}"/>
                         </h:form>                       
                     </h:column>
                     <h:column>
