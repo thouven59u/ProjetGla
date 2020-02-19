@@ -22,28 +22,28 @@
                              value="#{listeArticleBean.myArticles()}"
                              border="1" >
                     <h:column>
-                        <f:facet name="header">ID</f:facet>
-                        #{row.id}
-                    </h:column>
-                    <h:column>
                         <f:facet name="header">Nom</f:facet>
                         #{row.name}
                     </h:column>
                     <h:column>
+                        <f:facet name="header">Categorie</f:facet>
+                        #{row.categorie}
+                    </h:column>
+                    <h:column>
                         <f:facet name="header">Description</f:facet>
-                        #{row.category}
+                        #{row.description}
                     </h:column>
                     <h:column>
                         <f:facet name="header">Prix de depart</f:facet>
                         #{row.price}
                     </h:column>
                     <h:column>
-                        <f:facet name="header">Enchères Actuelles</f:facet>
-                        #{row.auctionEnd}
+                        <f:facet name="header">Enchère Actuelle</f:facet>
+                        #{listeArticleBean.findBestBet(row.id)}
                     </h:column>
                     <h:column>
                         <f:facet name="header">Date de fin</f:facet>
-                        #{row.auctionEnd}
+                        #{listeArticleBean.parseDate(row.auctionEnd)}
                     </h:column>
                     <h:column>
                         <f:facet name="header">User</f:facet>

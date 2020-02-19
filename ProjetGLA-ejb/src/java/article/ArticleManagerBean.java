@@ -36,13 +36,13 @@ public class ArticleManagerBean implements ArticleManager {
     
     
     @Override
-    public void addArticle(User user, String name, String description, double price, String category, Date endAuction) {
+    public void addArticle(User user, String name, String description, double price, String categorie, Date endAuction) {
         Article a = new Article();
         a.setUser(user);
         a.setName(name);
         a.setDescription(description);
         a.setPrice(price);
-        a.setCategory(category);
+        a.setCategorie(categorie);
         a.setAuctionEnd(endAuction);
         em.persist(a);
     }
@@ -148,6 +148,21 @@ public class ArticleManagerBean implements ArticleManager {
             User u = (User)q2.getSingleResult();
             u.setCancelCount(u.getCancelCount()+1);
         }
+    }
+    
+    	    /**
+     *
+     * @param cat
+     * @return
+     */
+    @Override   
+    public List<Article> getArticleByCat(String cat){
+        Date now = new Date();
+        Query q;
+        q = em.createNamedQuery("Article.findByCat");
+        q.setParameter("today",now,TemporalType.DATE);
+        q.setParameter("cat", cat);
+        return (List<Article>) q.getResultList();
     }
 
 }

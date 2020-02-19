@@ -8,10 +8,18 @@
         <title>QuentinLaBrocante</title>
     </h:head>
     <h:body>
-
         <h3>Liste des articles <a href="test.xhtml" style="float: right;padding-left:1%"> MonCompte</a><a href="index.xhtml" style="float: right"> Déconexion</a> </h3>
-         
-       
+        <h:form>
+            <h:selectOneMenu value = "#{listeArticleBean.search}"> 
+                <f:selectItem itemValue = "tous" itemLabel = "tous" /> 
+               <f:selectItem itemValue = "Informatique" itemLabel = "Informatique" /> 
+               <f:selectItem itemValue = "Cinéma" itemLabel = "Cinéma" /> 
+               <f:selectItem itemValue = "Litérature" itemLabel = "Litérature" /> 
+               <f:selectItem itemValue = "Sport" itemLabel = "Sport" /> 
+               <f:selectItem itemValue = "Loisir" itemLabel = "Loisir" />     
+            </h:selectOneMenu>  
+            <h:commandButton value="filtrer" action="#{listeArticleBean.allArticles()}"/>
+        </h:form>
             <table style="width: 100%;margin: 0%;">
                 <thead>
                     <tr>
@@ -19,7 +27,7 @@
                     </tr>
                 </thead>
                 <h:dataTable var="row" style="width: 100%"
-                             value="#{listeArticleBean.allArticles()}"
+                             value="#{listeArticleBean.articles}"
                              border="1" >
                     <h:column>
                         <f:facet name="header">ID</f:facet>
@@ -35,7 +43,7 @@
                     </h:column>
                     <h:column>
                         <f:facet name="header">Description</f:facet>
-                        #{row.category}
+                        #{row.categorie}
                     </h:column>
                     <h:column>
                         <f:facet name="header">Prix de depart</f:facet>

@@ -8,7 +8,9 @@ import authentication.*;
 import entities.Article;
 import entities.User;
 import entities.UsersArticles;
+import java.util.ArrayList;
 import java.util.Date;
+import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
@@ -32,15 +34,27 @@ public class ListeArticleBean {
     @EJB
     private ArticleManager articleBean;
     private double price;
+    private String search;
+    private List<Article> articles;
     
     public ListeArticleBean(){
         this.price = 0.0;
+        this.search ="tous";
+        this.articles = new ArrayList<>();
     }
     
-    public List<Article> allArticles(){
-        return this.articleBean.allArticles();
+    @PostConstruct
+    public void init( ) {
+         this.articles =  this.articleBean.allArticles();
     }
     
+    public void allArticles(){
+        if(!this.search.equals("tous")) {
+            this.articles = this.articleBean.getArticleByCat(this.search);
+        }else{
+            this.articles =  this.articleBean.allArticles();
+        }
+    }
     public List<Article> myArticles(){
         User u = this.cUsr.getUser();
         return this.articleBean.myArticles(u.getUserId());
@@ -121,5 +135,20 @@ public class ListeArticleBean {
             return "test";
         }
         return "listeArticle";
+    }
+    public String getSearch() {
+        return this.search;
+    }
+    
+    public void setSearch(String s ) {
+        this.search = s;
+    }
+    
+    public List<Article> getArticles(){
+        return this.articles;
+    }
+    
+    public void setArticles(List<Article> la){
+        this.articles =la;
     }
 }

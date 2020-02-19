@@ -28,5 +28,6 @@ public interface ArticleManager {
     public UsersArticles findBestBet(long id);
     public List<Article> articleWin(long idUser);
     public AuthenticationManager getAuthenticationManager();
+    public List<Article> getArticleByCat(String cat);
     public void cancelBet(long idArticle, long idUser, boolean estFini);
 }
