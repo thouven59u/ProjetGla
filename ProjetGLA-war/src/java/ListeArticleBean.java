@@ -88,6 +88,14 @@ public class ListeArticleBean {
         }
     }
     
+    public boolean verifierCancelCount(){
+        return (this.cUsr.getUser().getCancelCount() < 5);
+    }
+    
+    public boolean verifier(Date dateArticle){
+        return (verifDate(dateArticle) && verifierCancelCount());
+    }
+    
     public void check(FacesContext context, UIComponent comp, Object value) throws ValidatorException{
         Article a = (Article) articleBean.getArticleById((long)comp.getAttributes().get("idRow"));
         //System.out.println(a.getPrice()+" \\ "+value);
@@ -104,5 +112,14 @@ public class ListeArticleBean {
         }else{
             return "Aucune enchère placée";
         }
+    }
+    
+    public String annuler(long id, boolean estFini){
+        articleBean.cancelBet(id, this.cUsr.getUser().getUserId(), estFini);
+        if(estFini){
+            this.cUsr.getUser().setCancelCount(this.cUsr.getUser().getCancelCount()+1);
+            return "test";
+        }
+        return "listeArticle";
     }
 }

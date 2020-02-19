@@ -118,7 +118,7 @@ public class ArticleManagerBean implements ArticleManager {
         return authenticationManager;
     }
     
-    	    @Override
+    @Override
     public List<Article> articleWin(long idUser) {
         Query q = em.createNamedQuery("Users_Articles.ArticleWin");
         q.setParameter("uId",idUser);
@@ -132,6 +132,22 @@ public class ArticleManagerBean implements ArticleManager {
             }
         }
         return listA;
+    }
+    
+    @Override
+    public void cancelBet(long idArticle, long idUser, boolean estFini){
+        Query q = em.createNamedQuery("Users_Articles.find");
+        q.setParameter("aId", idArticle);
+        q.setParameter("uId", idUser);
+        UsersArticles ua = (UsersArticles) q.getSingleResult();
+        em.remove(ua);
+        
+        if(estFini){
+            Query q2 = em.createNamedQuery("User.findById");
+            q2.setParameter("id", idUser);
+            User u = (User)q2.getSingleResult();
+            u.setCancelCount(u.getCancelCount()+1);
+        }
     }
 
 }
