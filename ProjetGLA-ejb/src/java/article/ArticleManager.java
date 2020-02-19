@@ -8,6 +8,7 @@ package article;
 import authentication.AuthenticationManager;
 import entities.Article;
 import entities.User;
+import entities.UsersArticles;
 import java.util.Date;
 import java.util.List;
 import javax.ejb.Local;
@@ -24,5 +25,6 @@ public interface ArticleManager {
     public boolean delArticle(long id);
     public Article getArticleById(long id);
     public void modifyPrice(long idArticle, long idUser, double price);
+    public UsersArticles findBestBet(long id);
     public AuthenticationManager getAuthenticationManager();
 }

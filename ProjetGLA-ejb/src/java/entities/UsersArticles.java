@@ -25,6 +25,11 @@ import javax.persistence.Table;
             query = "SELECT a FROM UsersArticles a "
                   + "WHERE a.user_UserId = :uId "
                   + "AND a.articles_Id = :aId"
+    ),
+    @NamedQuery(
+            name  = "Users_Articles.findArticle",
+            query = "SELECT a FROM UsersArticles a "
+                  + "WHERE a.articles_Id = :articleId"
     )
 })
 public class UsersArticles {

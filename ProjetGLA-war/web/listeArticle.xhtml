@@ -30,6 +30,10 @@
                         #{row.name}
                     </h:column>
                     <h:column>
+                        <f:facet name="header">Vendu par</f:facet>
+                        #{row.user.login}                       
+                    </h:column>
+                    <h:column>
                         <f:facet name="header">Description</f:facet>
                         #{row.category}
                     </h:column>
@@ -38,16 +42,12 @@
                         #{row.price}
                     </h:column>
                     <h:column>
-                        <f:facet name="header">Enchères Actuelles</f:facet>
-                        #{row.auctionEnd}
+                        <f:facet name="header">Enchère Actuelle</f:facet>
+                        #{listeArticleBean.findBestBet(row.id)}
                     </h:column>
                     <h:column>
                         <f:facet name="header">Date de fin</f:facet>
                         #{row.auctionEnd}
-                    </h:column>
-                    <h:column>
-                        <f:facet name="header">User</f:facet>
-                        #{row.user.login}                       
                     </h:column>
                     <h:column>
                         <f:facet name="header">Faire une enchere</f:facet>

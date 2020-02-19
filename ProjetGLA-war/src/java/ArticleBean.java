@@ -8,6 +8,7 @@ import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
 import authentication.*;
+import entities.UsersArticles;
 import java.util.List;
 
 /*

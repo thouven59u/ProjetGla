@@ -7,6 +7,7 @@ import javax.inject.Named;
 import authentication.*;
 import entities.Article;
 import entities.User;
+import entities.UsersArticles;
 import java.util.Date;
 import javax.faces.application.FacesMessage;
 import javax.faces.component.UIComponent;
@@ -92,6 +93,16 @@ public class ListeArticleBean {
         //System.out.println(a.getPrice()+" \\ "+value);
         if(a.getPrice() > (double)value){
             throw new ValidatorException(new FacesMessage("L'enchère doit être supérieur à l'enchère minimum actuelle"));
+        }
+    }
+    
+    public String findBestBet(long id){
+        UsersArticles ua = articleBean.findBestBet(id);
+        if(ua != null){
+            String login = cUsr.findById(ua.getUser_UserId()).getLogin();
+            return ua.getEnchere()+"€ par "+login;
+        }else{
+            return "Aucune enchère placée";
         }
     }
 }

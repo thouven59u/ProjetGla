@@ -95,6 +95,23 @@ public class ArticleManagerBean implements ArticleManager {
             em.persist(ua);
         }
     }
+    
+    @Override
+    public UsersArticles findBestBet(long id){
+        UsersArticles ua = null;
+        Query q = em.createNamedQuery("Users_Articles.findArticle");
+        q.setParameter("articleId", id);
+        try{
+            List<UsersArticles> lUA = q.getResultList();
+            for(UsersArticles u : lUA){
+                if(ua == null || u.getEnchere() > ua.getEnchere())
+                    ua = u;
+            }
+        }catch(NoResultException e){
+            
+        }
+        return ua;
+    }
 
     public AuthenticationManager getAuthenticationManager() {
         return authenticationManager;
