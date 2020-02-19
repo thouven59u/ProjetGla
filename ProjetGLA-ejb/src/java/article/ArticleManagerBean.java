@@ -15,6 +15,9 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import authentication.*;
+import entities.UsersArticles;
+import javax.ejb.EJBException;
+import javax.persistence.NoResultException;
 import javax.persistence.TemporalType;
 
 /**
@@ -66,11 +69,20 @@ public class ArticleManagerBean implements ArticleManager {
     }
     
     @Override
-    public void modifyPrice(long id, double price){
-        Query q = em.createNamedQuery("Article.find");
-        q.setParameter("id",id);
-        Article a = (Article) q.getSingleResult();
-        a.setPrice(price);
+    public void modifyPrice(long idArticle, long idUser, double price){
+        Query q = em.createNamedQuery("Users_Articles.find");
+        q.setParameter("uId",idUser);
+        q.setParameter("aId",idArticle);
+        try{
+            UsersArticles a = (UsersArticles) q.getSingleResult();
+            a.setEnchere(price);
+        }catch(NoResultException e){
+            UsersArticles ua = new UsersArticles();
+            ua.setUser_UserId(idUser);
+            ua.setArticles_Id(idArticle);
+            ua.setEnchere(price);
+            em.persist(ua);
+        }
     }
 
     public AuthenticationManager getAuthenticationManager() {

@@ -22,6 +22,6 @@ public interface ArticleManager {
     public List<Article> allArticles();
     public boolean delArticle(long id);
     public Article getArticleById(long id);
-    public void modifyPrice(long id, double price);
+    public void modifyPrice(long idArticle, long idUser, double price);
     public AuthenticationManager getAuthenticationManager();
 }

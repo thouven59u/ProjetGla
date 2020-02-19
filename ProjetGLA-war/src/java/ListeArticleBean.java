@@ -46,11 +46,7 @@ public class ListeArticleBean {
     
     public String encherir(long id){
         System.out.println("ListeArticleBean.encherir() "+ this.price);
-        try{
-            this.articleBean.modifyPrice(id, this.price);
-        }catch(Exception e){
-            e.getStackTrace();
-        }
+        this.articleBean.modifyPrice(id, articleBean.getAuthenticationManager().getUser().getUserId(), this.price);
         return "listeArticle";
     }
     
@@ -76,10 +72,9 @@ public class ListeArticleBean {
     
     public void check(FacesContext context, UIComponent comp, Object value) throws ValidatorException{
         Article a = (Article) articleBean.getArticleById((long)comp.getAttributes().get("idRow"));
-        System.out.println(a.getPrice()+" \\ "+value);
+        //System.out.println(a.getPrice()+" \\ "+value);
         if(a.getPrice() > (double)value){
             throw new ValidatorException(new FacesMessage("L'enchère doit être supérieur à l'enchère minimum actuelle"));
         }
-        System.out.println("OK EXCEPTION ENCHERE");
     }
 }
