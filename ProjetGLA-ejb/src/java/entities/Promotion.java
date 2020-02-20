@@ -5,6 +5,7 @@
  */
 package entities;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -24,6 +25,10 @@ import javax.persistence.Table;
     @NamedQuery(
             name  = "Promotion.deleteAll",
             query = "DELETE FROM Promotion"
+    ),
+    @NamedQuery(
+            name  = "Promotion.getAll",
+            query = "SELECT p FROM Promotion p"
     )
 })
 public class Promotion {

@@ -5,7 +5,7 @@
  */
 package promotion;
 
-import javax.annotation.PostConstruct;
+ 
 import javax.ejb.EJB;
 import javax.ejb.Singleton;
 import javax.ejb.LocalBean;
@@ -28,10 +28,9 @@ public class PromotionReloaderBean {
     @Schedule(hour = "*", minute = "*/1", second = "0") // Reload toutes les minutes
     //@Schedule() // Reload tous les jours à minuit 
     private void reload() {
-        System.out.println("PromotionReloader : reload promotions...");
+        System.out.println("Promotion Reloader : reload promotions...");
         pm.deleteAll();
         pm.createPromotions();
-        System.out.println("PromotionReloader : promotions reloaded");
-        
+        System.out.println("Promotion Reloader : promotions reloaded");
     }
 }

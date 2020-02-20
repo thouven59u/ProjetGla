@@ -5,6 +5,8 @@
  */
 package promotion;
 
+import entities.Promotion;
+import java.util.List;
 import javax.ejb.Local;
 
 /**
@@ -15,4 +17,5 @@ import javax.ejb.Local;
 public interface PromotionManager {
     public void deleteAll();
     public void createPromotions();
+    public List<Promotion> getAll();
 }

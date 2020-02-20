@@ -52,4 +52,9 @@ public class PromotionManagerBean implements PromotionManager {
             return LIVRAISON;
         return REDUCTION;
     }
+
+    @Override
+    public List<Promotion> getAll() {
+        return em.createNamedQuery("Promotion.getAll").getResultList();
+    }
 }

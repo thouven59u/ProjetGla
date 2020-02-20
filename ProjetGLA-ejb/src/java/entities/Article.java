@@ -7,13 +7,16 @@ package entities;
 
 import java.io.Serializable;
 import java.util.Date;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -63,6 +66,9 @@ public class Article implements Serializable{
     
     @Temporal(TemporalType.DATE)
     private Date auctionEnd;
+    
+    @OneToOne(mappedBy = "article", targetEntity = Promotion.class, cascade = CascadeType.ALL, fetch = FetchType.LAZY, optional = true)
+    private Promotion promotion;
     
     public Article(){
         
@@ -131,9 +137,15 @@ public class Article implements Serializable{
 
     @Override
     public String toString() {
-        return "Article{" + "id=" + id + ", user=" + user + ", name=" + name + ", categorie=" + categorie + '}';
+        return "Article{" + "id=" + id + ", user=" + user + ", name=" + name + ", categorie=" + categorie + ", Promo=" + promotion +'}';
+    }
+
+    public Promotion getPromotion() {
+        return promotion;
     }
     
-    
+    public boolean hasPromotion() {
+        return this.promotion == null;
+    }
     
 }
