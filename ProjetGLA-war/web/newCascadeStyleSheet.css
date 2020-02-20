@@ -66,7 +66,8 @@ content: "Quentin-La-Brocante";
   width: 1090px;
  /* height: 42px;*/
   list-style: none;
-  margin: 10px 0 0 0; padding: 25px 10px;
+  margin: 10px 0 0 0; 
+  padding: 25px 0px;
   border-top: 4px double #AAA;
   border-bottom: 4px double #AAA;
   position: relative;

@@ -16,8 +16,8 @@
                 <h:form>
                     <h:commandButton class="buttonCompte" style="width: 100%;"
                     value="Deconexion" action="#{testBean.logout}"/> 
-                    <h:commandButton class="buttonCompte" style="width: 100%;"
-                        value="Mes enchères" action="#{testBean.myArt}"  />
+                    <h:button class="buttonCompte" style="width: 100%;"
+                        value="Mes enchères" outcome="mesArticle"  />
                     <h:button class="buttonCompte" style="width: 100%;"
                               value="Ajouter une enchère" outcome="addArticle" />
                     <h:button class="buttonCompte" style="width: 100%;"
@@ -90,12 +90,12 @@
                             <f:facet name="header">Enchère Finale</f:facet>
                              #{listeArticleBean.findBestBet(row.id)}
                         </h:column>
-						<h:column>
-							<f:facet name="header">Option</f:facet>
-							<h:form>
-								<h:commandButton style="width: 100%;" value="Retirer du panier" action="#{panierBean.deleteArticle(row.id)}"/>
-							</h:form>
-						</h:column>
+                                <h:column>
+                                        <f:facet name="header">Option</f:facet>
+                                        <h:form>
+                                                <h:commandButton class="buttonCompte" style="width: 100%;font-size: 15px" value="Retirer du panier" action="#{panierBean.deleteArticle(row.id)}"/>
+                                        </h:form>
+                                </h:column>
                     </h:dataTable>
                 </div>
                 <h:button class="buttonCompte" style="width: 100%;" value="Valider"/>
