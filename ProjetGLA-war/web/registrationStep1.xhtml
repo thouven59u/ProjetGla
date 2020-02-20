@@ -6,55 +6,60 @@
       xmlns:c="http://java.sun.com/jsp/jstl/core">
     <h:head>
         <title>QuentinLaBrocante</title>
+        <link rel="stylesheet" href="newCascadeStyleSheet.css"></link>
     </h:head>
  <h:body>
         <h:form>
-            <fieldset style="height: 95vh;width: 50%;margin: 0% 25%; overflow: auto">
-                <legend style="text-align: center">Formulaire d'inscription </legend>
-                <h1 style="text-align: center; margin-top: 5%">Quentin-La-Brocante</h1>
-                <h2 style="text-align: center;color: red">#{registrationBean.erreur}</h2>
-                <h3 style="width: 70%;margin: 5% 15% 0% 15%">identifiant * :</h3>
-                <h:inputText required="true" style="width: 70%;margin: 0% 15%" value="#{registrationBean.login}"
-                             id="loginInput">
-                </h:inputText>
-                <br/>
-                <h3 style="width: 70%;margin: 5% 15% 0% 15%">Mot de passe* :</h3> 
-                <h:inputSecret required="true" style="width: 70%;margin: 0% 15%" value="#{registrationBean.password}"
-                             id="passwordInput">
-                </h:inputSecret>
-                <h3 style="width: 70%;margin: 5% 15% 0% 15%">Confirme le mot de passe* :</h3> 
-                <h:inputSecret required="true" style="width: 70%;margin: 0% 15%" value="#{registrationBean.conf}"
-                             id="confpasswordInput">
-                </h:inputSecret>
-                <br/>
-                <h3 style="width: 70%;margin: 5% 15% 0% 15%">Prénom* :</h3>
-                <h:inputText required="true" style="width: 70%;margin: 0% 15%" value="#{registrationBean.prenom}"
-                             id="prenomInput">
-                </h:inputText>
-                <br/>
-                <h3 style="width: 70%;margin: 5% 15% 0% 15%">Nom* :</h3>
-                <h:inputText required="true" style="width: 70%;margin: 0% 15%" value="#{registrationBean.nom}"
-                             id="nomInput">
-                </h:inputText>
-                <br/>
-                <h3 style="width: 70%;margin: 5% 15% 0% 15%">Adresse complète* :</h3>
-                <h:inputText required="true" style="width: 70%;margin: 0% 15%" value="#{registrationBean.adresse}"
-                             id="adresseInput">
-                </h:inputText>
-                <br/>
-                <h3 style="width: 70%;margin: 5% 15% 0% 15%">Code IBAN* :</h3>
-                <h:inputText required="true" style="width: 70%;margin: 0% 15%" value="#{registrationBean.iban}"
-                             id="ibanInput">
-                </h:inputText>
-                <br/>
-                <h:commandButton style="width: 70%;margin: 1% 15% 0% 15%;padding: 1%"
-                    value="S'inscrire" action="#{registrationBean.registerLogin}"/>
-                <div style="text-align: center;width: 100%">
-                    <span>* champ requis</span>
+           <div  class="fancy-border" style="height: 85vh;width: 90%;margin:auto">
+                <div id="header" style="text-align: center; margin-bottom: 4%">
+                  <a href="/" id="logoIndex1">Quentin-La-Brocante</a>
                 </div>
-            </fieldset>
+                <h2 style="text-align: center;color: red">#{registrationBean.erreur}</h2>
+                <div id="menuIndex" style="text-align: center; width: 80%" >
+                    <div style="height: 45vh;overflow: auto">
+                        <h3 style="width: 70.5%; margin: 2% 0% 0% 2.5%;">identifiant * :</h3>
+                        <h:inputText required="true" style="width: 70%;margin: 0% 15%" value="#{registrationBean.login}"
+                                     id="loginInput">
+                        </h:inputText>
+                        <br/>
+                        <h3 style="width: 70.5%; margin: 2% 0% 0% 2.5%;">Mot de passe* :</h3> 
+                        <h:inputSecret required="true" style="width: 70%;margin: 0% 15%" value="#{registrationBean.password}"
+                                     id="passwordInput">
+                        </h:inputSecret>
+                        <h3 style="width: 70.5%; margin: 2% 0% 0% 2.5%;">Confirme le mot de passe* :</h3> 
+                        <h:inputSecret required="true" style="width: 70%;margin: 0% 15%" value="#{registrationBean.conf}"
+                                     id="confpasswordInput">
+                        </h:inputSecret>
+                        <br/>
+                        <h3 style="width: 70.5%; margin: 2% 0% 0% 2.5%;">Prénom* :</h3>
+                        <h:inputText required="true" style="width: 70%;margin: 0% 15%" value="#{registrationBean.prenom}"
+                                     id="prenomInput">
+                        </h:inputText>
+                        <br/>
+                        <h3 style="width: 70.5%; margin: 2% 0% 0% 2.5%;">Nom* :</h3>
+                        <h:inputText required="true" style="width: 70%;margin: 0% 15%" value="#{registrationBean.nom}"
+                                     id="nomInput">
+                        </h:inputText>
+                        <br/>
+                        <h3 style="width: 70.5%; margin: 2% 0% 0% 2.5%;">Adresse complète* :</h3>
+                        <h:inputText required="true" style="width: 70%;margin: 0% 15%" value="#{registrationBean.adresse}"
+                                     id="adresseInput">
+                        </h:inputText>
+                        <br/>
+                        <h3 style="width: 70.5%; margin: 2% 0% 0% 2.5%;">Code IBAN* :</h3>
+                        <h:inputText required="true" style="width: 70%;margin: 0% 15%" value="#{registrationBean.iban}"
+                                     id="ibanInput">
+                        </h:inputText>
+                        <br/>
+                    </div>
+                    <h:commandButton class="buttonIndex" style="width: 74%;margin: 1% 14% 0% 14%;padding: 1%"
+                        value="S'inscrire" action="#{registrationBean.registerLogin}"/>
+                    <div style="text-align: center;width: 100%">
+                        <span>* champ requis</span>
+                    </div>
+                </div>
+            </div>
         </h:form>
-        <span style="position: absolute;right: 0;left: 0;text-align: center;padding-top: 10px">projet GLA 2020</span>
     </h:body>
 </html>
 

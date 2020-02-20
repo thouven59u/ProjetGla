@@ -6,75 +6,77 @@
       xmlns:c="http://java.sun.com/jsp/jstl/core">
     <h:head>
         <title>QuentinLaBrocante</title>
+        <link rel="stylesheet" href="newCascadeStyleSheet.css"></link>
     </h:head>
     <h:body>
-        <h3>Liste des articles <a href="test.xhtml" style="float: right;padding-left:1%"> MonCompte</a><a href="index.xhtml" style="float: right"> Déconexion</a> </h3>
+        <div id="header" style="text-align: center; margin-bottom: 2%">
+            <a href="/" id="logo" style="margin: auto">Quentin-La-Brocante</a>
+            <ul id="menu" style="width: 100% ">
+                <li><a href="listeArticle.xhtml" class="active"><span>Enchères</span></a></li>
+                <li><a href="mesArticle.xhtml"><span>Mes enchères</span></a></li>
+                <li><a href="test.xhtml" > Mon compte</a></li>
+                <li><a href="index.xhtml" > Déconexion</a></li>
+            </ul>
+        </div>
         <h:form>
-            <h:selectOneMenu value = "#{listeArticleBean.search}"> 
+            <h:selectOneMenu value = "#{listeArticleBean.search}" style="float: left; font-size:18px "> 
                 <f:selectItem itemValue = "tous" itemLabel = "tous" /> 
                <f:selectItem itemValue = "Informatique" itemLabel = "Informatique" /> 
                <f:selectItem itemValue = "Cinéma" itemLabel = "Cinéma" /> 
                <f:selectItem itemValue = "Litérature" itemLabel = "Litérature" /> 
                <f:selectItem itemValue = "Sport" itemLabel = "Sport" /> 
                <f:selectItem itemValue = "Loisir" itemLabel = "Loisir" />     
-            </h:selectOneMenu>  
-            <h:commandButton value="filtrer" action="#{listeArticleBean.allArticles()}"/>
+            </h:selectOneMenu>
+            <h:commandButton class="buttonCompte" style=" font-size:18px" value="filtrer" action="#{listeArticleBean.allArticles()}"/>
         </h:form>
-            <table style="width: 100%;margin: 0%;">
-                <thead>
-                    <tr>
-                        <th colspan="2" style="background-color: black; color: white">Enchères</th>
-                    </tr>
-                </thead>
-                <h:dataTable var="row" style="width: 100%"
-                             value="#{listeArticleBean.articles}"
-                             border="1" >
-                    <h:column>
-                        <f:facet name="header">ID</f:facet>
-                        #{row.id}
-                    </h:column>
-                    <h:column>
-                        <f:facet name="header">Nom</f:facet>
-                        #{row.name}
-                    </h:column>
-                    <h:column>
-                        <f:facet name="header">Vendu par</f:facet>
-                        #{row.user.login}                       
-                    </h:column>
-                    <h:column>
-                        <f:facet name="header">Description</f:facet>
-                        #{row.categorie}
-                    </h:column>
-                    <h:column>
-                        <f:facet name="header">Prix de depart</f:facet>
-                        #{row.price}
-                    </h:column>
-                    <h:column>
-                        <f:facet name="header">Enchère Actuelle</f:facet>
-                        #{listeArticleBean.findBestBet(row.id)}
-                    </h:column>
-                    <h:column>
-                        <f:facet name="header">Date de fin</f:facet>
-                        #{row.auctionEnd}
-                    </h:column>
-                    <h:column>
-                        <f:facet name="header">Faire une enchere</f:facet>
-                        <h:form>
-                                Price: 
-                                <h:inputText value="#{listeArticleBean.price}" id="priceInput" validator="#{listeArticleBean.check}">
-                                    <f:attribute name="idRow" value="#{row.id}"></f:attribute>
-                                </h:inputText>
-                                <h:commandButton rendered="#{listeArticleBean.verifier(row.auctionEnd)}" value="encherir" action="#{listeArticleBean.encherir(row.id)}"/>
-                                <h:commandButton rendered="#{listeArticleBean.verifier(row.auctionEnd)}" value="annuler" action="#{listeArticleBean.annuler(row.id, false)}"/>
-                        </h:form>                       
-                    </h:column>
-                    <h:column>
-                        <h:form>
-                            <f:facet name="header">Supprimer son article</f:facet>                        
-                            <h:commandButton rendered="#{listeArticleBean.verifCreateur(row.id)}" value="Supprimer son article" action="#{listeArticleBean.delArticle(row.id)}"/>
-                        </h:form>
-                    </h:column>
-                </h:dataTable>
-            </table>
+        <h:dataTable var="row" style="width: 100%"
+                     value="#{listeArticleBean.articles}"
+                     border="1" >
+            <h:column>
+                <f:facet name="header">ID</f:facet>
+                #{row.id}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Nom</f:facet>
+                #{row.name}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Vendu par</f:facet>
+                #{row.user.login}                       
+            </h:column>
+            <h:column>
+                <f:facet name="header">Description</f:facet>
+                #{row.categorie}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Prix de depart</f:facet>
+                #{row.price}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Enchère Actuelle</f:facet>
+                #{listeArticleBean.findBestBet(row.id)}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Date de fin</f:facet>
+                #{row.auctionEnd}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Faire une enchere</f:facet>
+                <h:form>
+                        Prix: 
+                        <h:inputText value="#{listeArticleBean.price}" id="priceInput" validator="#{listeArticleBean.check}">
+                            <f:attribute name="idRow" value="#{row.id}"></f:attribute>
+                        </h:inputText>
+                        <h:commandButton class="buttonCompte" style="font-size: 15px; width: 50%; float: left" rendered="#{listeArticleBean.verifier(row.auctionEnd)}" value="encherir" action="#{listeArticleBean.encherir(row.id)}"/>
+                        <h:commandButton class="buttonCompte" style="font-size: 15px;width: 50%" rendered="#{listeArticleBean.verifier(row.auctionEnd)}" value="annuler" action="#{listeArticleBean.annuler(row.id, false)}"/>
+                </h:form>                       
+            </h:column>
+            <h:column>
+                <h:form>
+                    <f:facet name="header">Supprimer son article</f:facet>                        
+                    <h:commandButton class="buttonCompte" style="font-size: 15px" rendered="#{listeArticleBean.verifCreateur(row.id)}" value="Supprimer son article" action="#{listeArticleBean.delArticle(row.id)}"/>
+                </h:form>
+            </h:column>
+        </h:dataTable>
     </h:body>
 </html>

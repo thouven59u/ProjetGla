@@ -10,6 +10,7 @@ and open the template in the editor.
     <h:head>
         <title>TODO supply a title</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link rel="stylesheet" href="newCascadeStyleSheet.css"></link>
     </h:head>
     <h:body>
         <h:form>
@@ -39,6 +40,8 @@ and open the template in the editor.
                 <br/>
                 <h:commandButton style="width: 70%;margin: 1% 15% 0% 15%;padding: 1%"
                     value="Valider commande" action="#{panierBean.validerPanier()}"/>
+                <h:button style="width: 70%;margin: 1% 15% 0% 15%;padding: 1%"
+                    value="Retour" outcome="test"/>
                 <div style="text-align: center;width: 100%">
                     <span>* champ requis</span>
                 </div>

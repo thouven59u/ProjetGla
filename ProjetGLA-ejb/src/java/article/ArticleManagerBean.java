@@ -139,8 +139,10 @@ public class ArticleManagerBean implements ArticleManager {
         Query q = em.createNamedQuery("Users_Articles.find");
         q.setParameter("aId", idArticle);
         q.setParameter("uId", idUser);
-        UsersArticles ua = (UsersArticles) q.getSingleResult();
-        em.remove(ua);
+        try{
+            UsersArticles ua = (UsersArticles) q.getSingleResult();
+            em.remove(ua);
+        }catch(NoResultException e){}
         
         if(estFini){
             Query q2 = em.createNamedQuery("User.findById");
