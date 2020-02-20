@@ -18,4 +18,5 @@ public interface AuthenticationManager {
     
     public void logOut();
     public User getUser();
+    public User findById(long id);
 }

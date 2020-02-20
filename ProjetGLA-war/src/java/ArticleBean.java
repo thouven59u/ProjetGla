@@ -1,14 +1,11 @@
 
 import article.ArticleManager;
-import authentication.RegistrationManager;
-import entities.Article;
 import entities.User;
 import java.util.Date;
 import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
 import authentication.*;
-import java.util.List;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -30,14 +27,15 @@ public class ArticleBean {
     @EJB
     private AuthenticationManager authenticationManager;
     
-    private String name, description, category;
+    
+    private String name, description, categorie;
     private Date auctionEnd;
     private double price;
 
     public ArticleBean() {
         this.name = "";
         this.description = "";
-        this.category = "";
+        this.categorie = "Informatique";
         this.price = 0.0;
         this.auctionEnd = new Date();
     }
@@ -65,15 +63,6 @@ public class ArticleBean {
     public void setDescription(String description) {
         this.description = description;
     }
-
-    public String getCategory() {
-        return category;
-    }
-
-    public void setCategory(String category) {
-        this.category = category;
-    }
-
     public Date getAuctionEnd() {
         return auctionEnd;
     }
@@ -92,11 +81,19 @@ public class ArticleBean {
     
     public String createArticle() {
         if (authenticationManager.getUser() != null) {
-            this.articleBean.addArticle(authenticationManager.getUser(), name, description, price, category, auctionEnd);
+            this.articleBean.addArticle(authenticationManager.getUser(), name, description, price,categorie, auctionEnd);
             return "test";       
         } else {
             return "index";
         }
+    }
+    
+    public String getCategorie(){
+        return this.categorie;
+    }
+    
+    public void setCategorie(String s){
+        this.categorie =s;
     }
     
     public User getCurrentUser(){

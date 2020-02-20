@@ -31,9 +31,13 @@ and open the template in the editor.
                 <br/>
                 
                 Category: 
-                <h:inputText value="#{articleBean.category}"
-                             id="categoryInput">
-                </h:inputText>
+                <h:selectOneMenu value = "#{articleBean.categorie}"> 
+                    <f:selectItem itemValue = "Informatique" itemLabel = "Informatique" /> 
+                    <f:selectItem itemValue = "Cinéma" itemLabel = "Cinéma" /> 
+                    <f:selectItem itemValue = "Litérature" itemLabel = "Litérature" /> 
+                    <f:selectItem itemValue = "Sport" itemLabel = "Sport" /> 
+                    <f:selectItem itemValue = "Loisir" itemLabel = "Loisir" />     
+                </h:selectOneMenu>  
                 <br/>
 
                 Price: 

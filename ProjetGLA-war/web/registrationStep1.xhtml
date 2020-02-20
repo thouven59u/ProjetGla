@@ -8,11 +8,10 @@
         <title>QuentinLaBrocante</title>
     </h:head>
  <h:body>
-        <span style="position: absolute;bottom: 5%;right: 0;left: 0;text-align: center">projet GLA 2020</span>
         <h:form>
-            <fieldset style="height: 95vh;width: 50%;margin: 0% 25%">
+            <fieldset style="height: 95vh;width: 50%;margin: 0% 25%; overflow: auto">
                 <legend style="text-align: center">Formulaire d'inscription </legend>
-                <h1 style="text-align: center; margin-top: 15%">Quentin-La-Brocante</h1>
+                <h1 style="text-align: center; margin-top: 5%">Quentin-La-Brocante</h1>
                 <h2 style="text-align: center;color: red">#{registrationBean.erreur}</h2>
                 <h3 style="width: 70%;margin: 5% 15% 0% 15%">identifiant * :</h3>
                 <h:inputText required="true" style="width: 70%;margin: 0% 15%" value="#{registrationBean.login}"
@@ -28,6 +27,25 @@
                              id="confpasswordInput">
                 </h:inputSecret>
                 <br/>
+                <h3 style="width: 70%;margin: 5% 15% 0% 15%">Prénom* :</h3>
+                <h:inputText required="true" style="width: 70%;margin: 0% 15%" value="#{registrationBean.prenom}"
+                             id="prenomInput">
+                </h:inputText>
+                <br/>
+                <h3 style="width: 70%;margin: 5% 15% 0% 15%">Nom* :</h3>
+                <h:inputText required="true" style="width: 70%;margin: 0% 15%" value="#{registrationBean.nom}"
+                             id="nomInput">
+                </h:inputText>
+                <br/>
+                <h3 style="width: 70%;margin: 5% 15% 0% 15%">Adresse complète* :</h3>
+                <h:inputText required="true" style="width: 70%;margin: 0% 15%" value="#{registrationBean.adresse}"
+                             id="adresseInput">
+                </h:inputText>
+                <br/>
+                <h3 style="width: 70%;margin: 5% 15% 0% 15%">Code IBAN* :</h3>
+                <h:inputText required="true" style="width: 70%;margin: 0% 15%" value="#{registrationBean.iban}"
+                             id="ibanInput">
+                </h:inputText>
                 <br/>
                 <h:commandButton style="width: 70%;margin: 1% 15% 0% 15%;padding: 1%"
                     value="S'inscrire" action="#{registrationBean.registerLogin}"/>
@@ -36,6 +54,7 @@
                 </div>
             </fieldset>
         </h:form>
+        <span style="position: absolute;right: 0;left: 0;text-align: center;padding-top: 10px">projet GLA 2020</span>
     </h:body>
 </html>
 

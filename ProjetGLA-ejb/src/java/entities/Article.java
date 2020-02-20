@@ -14,7 +14,6 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -30,11 +29,23 @@ import javax.persistence.TemporalType;
      @NamedQuery(
             name  = "Article.all",
             query = "SELECT a from Article a "
+                  + "WHERE a.auctionEnd >= :today "
+    ),
+     @NamedQuery(
+            name  = "Article.byUser",
+            query = "SELECT a from Article a "
+                  + "WHERE a.user = :user "
     ),
      @NamedQuery(
             name  = "Article.delById",
             query = "DELETE FROM Article a WHERE a.id = :id "
     ),
+    @NamedQuery(
+        name  = "Article.findByCat",
+        query = "SELECT a from Article a " +
+                "WHERE a.auctionEnd >= :today " +
+                "AND a.categorie = :cat"
+    )
 })
 public class Article implements Serializable{
     
@@ -48,7 +59,7 @@ public class Article implements Serializable{
     private String name;
     private String description;
     private double price;
-    private String category;
+    private String categorie;
     
     @Temporal(TemporalType.DATE)
     private Date auctionEnd;
@@ -62,7 +73,7 @@ public class Article implements Serializable{
         this.name = n;
         this.description = d;
         this.price = p;
-        this.category = c;
+        this.categorie = c;
         this.auctionEnd = aE;
     }
     
@@ -102,12 +113,12 @@ public class Article implements Serializable{
         this.price = p;
     }
     
-    public String getCategory(){
-        return this.category;
+    public String getCategorie(){
+        return this.categorie;
     }
     
-    public void setCategory(String c){
-        this.category = c;
+    public void setCategorie(String c){
+        this.categorie = c;
     }
 
     public User getUser() {

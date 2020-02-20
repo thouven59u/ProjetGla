@@ -14,5 +14,5 @@ import javax.ejb.Local;
  */
 @Local
 public interface RegistrationManager {
-    public User register(String login, String mdp);
+    public User register(String login, String mdp, String nom, String prenom, String adresse, String iban);
 }

@@ -1,7 +1,9 @@
 
 import authentication.AuthenticationManager;
-import authentication.ConnectedUser;
+import article.ArticleManager;
+import entities.Article;
 import entities.User;
+import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
@@ -23,6 +25,8 @@ public class TestBean {
     
     @EJB
     private AuthenticationManager cUsr;
+    @EJB
+    private ArticleManager articleManager;
     
     private User u;
     
@@ -35,6 +39,13 @@ public class TestBean {
     }
     public String logout() {
         return "index";
+    }
+    public String myArt() {
+        return "mesArticle";
+    }
+    
+    public List<Article> articelWin() {
+        return articleManager.articleWin(this.cUsr.getUser().getUserId());  
     }
     
     public String getUser() { 

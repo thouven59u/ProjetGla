@@ -13,47 +13,87 @@
             <div style="width: 70%;margin: 1% 15% 0% 15%;padding: 1%">
                 <h3>Login : #{testBean.login}</h3>
                 <h:form>
-                    <h:commandButton 
+                    <h:commandButton style="width: 100%;"
                     value="Deconexion" action="#{testBean.logout}"/> 
-                    <h:button style="width: 100%;"
-                        value="Afficher la liste des enchères" outcome="listeArticle" />
+                    <h:commandButton  style="width: 100%;"
+                        value="Afficher la liste de mes enchères" action="#{testBean.myArt}"  />
                     <h:button style="width: 100%;"
                               value="Ajouter un article" outcome="addArticle" />
+                    <h:button style="width: 100%;"
+                        value="Afficher la liste des enchères" outcome="listeArticle" />
                 </h:form>
             </div>
         </div>
         <div style="width: 68%;height: 90vh;display: inline-block;padding: 0">
             <fieldset style="height: 80vh;">
                 <legend> Vos Enchères</legend>
-                <h:form>
                     <table style="width: 100%;margin: 0%;">
                         <h:dataTable var="row" style="width: 100%"
-                                     value=""
+                                     value="#{testBean.articelWin()}"
                                      border="1" >
                             <h:column>
                                 <f:facet name="header">ID</f:facet>
-
+                                #{row.id}
                             </h:column>
                             <h:column>
                                 <f:facet name="header">Nom</f:facet>
-
+                                #{row.name}
                             </h:column>
                             <h:column>
-                                <f:facet name="header">Prix de depart</f:facet>
-
+                                <f:facet name="header">Prix de départ</f:facet>
+                                #{row.price}
                             </h:column>
                             <h:column>
-                                <f:facet name="header">Enchères Final</f:facet>
-
+                                <f:facet name="header">Enchère Finale</f:facet>
+                                 #{listeArticleBean.findBestBet(row.id)}
                             </h:column>
                             <h:column>
                                 <f:facet name="header">Option</f:facet>
-                                <h:button style="width: 100%;" value="Annuler"/>
+                                <h:form>
+                                    <h:commandButton style="width: 100%;" value="annuler" action="#{listeArticleBean.annuler(row.id, true)}"/>
+                                </h:form>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">Ajout panier</f:facet>
+                                <h:form>
+                                    <h:commandButton value="ajouter" action="#{panierBean.addArticle(row.id)}"/>
+                                </h:form>                       
                             </h:column>
                         </h:dataTable>
                     </table>
-                    <h:button style="width: 100%;" value="Valider"/>
-                </h:form>
+            </fieldset>
+            <fieldset style="height: 80vh;">
+                <legend> Votre panier</legend>
+                    <table style="width: 100%;margin: 0%;">
+                        <h:dataTable var="row" style="width: 100%"
+                                     value="#{panierBean.getArticles()}"
+                                     border="1" >
+                            <h:column>
+                                <f:facet name="header">ID</f:facet>
+                                #{row.id}
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">Nom</f:facet>
+                                #{row.name}
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">Prix de départ</f:facet>
+                                #{row.price}
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">Enchère Finale</f:facet>
+                                 #{listeArticleBean.findBestBet(row.id)}
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">Option</f:facet>
+                                <h:form>
+                                    <h:commandButton style="width: 100%;" value="Retirer du panier" action="#{panierBean.deleteArticle(row.id)}"/>
+                                </h:form>
+                            </h:column>
+                        </h:dataTable>
+                    </table>
+                <p>Total : #{panierBean.getPrix()}€</p>
+                <h:button style="width: 100%;" value="Valider"/>
             </fieldset>
         </div>
     </h:body>

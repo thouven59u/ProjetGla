@@ -42,11 +42,16 @@ public class AuthenticationManagerBean implements AuthenticationManager {
         return this.connectedUser.getUser();
     }
     
-    
+    public User findById(long id){
+        Query q = em.createNamedQuery("User.findById");
+        q.setParameter("id",id);
+        User u = (User) q.getSingleResult();
+        return u;
+    }
     
     @Override
     public User getUser() {
-        System.out.println("INFO : JE SUIS DANS GET USER");
+        //System.out.println("INFO : JE SUIS DANS GET USER");
         return this.connectedUser.getUser();
     }
 
