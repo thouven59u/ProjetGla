@@ -54,14 +54,46 @@
                                 </h:form>
                             </h:column>
                             <h:column>
-                                <f:facet name="header">Valider</f:facet>
+                                <f:facet name="header">Ajout panier</f:facet>
                                 <h:form>
-                                    <h:commandButton value="valider"/>
+                                    <h:commandButton value="ajouter" action="#{panierBean.addArticle(row.id)}"/>
                                 </h:form>                       
                             </h:column>
                         </h:dataTable>
                     </table>
-                    <h:button style="width: 100%;" value="Valider"/>
+            </fieldset>
+            <fieldset style="height: 80vh;">
+                <legend> Votre panier</legend>
+                    <table style="width: 100%;margin: 0%;">
+                        <h:dataTable var="row" style="width: 100%"
+                                     value="#{panierBean.getArticles()}"
+                                     border="1" >
+                            <h:column>
+                                <f:facet name="header">ID</f:facet>
+                                #{row.id}
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">Nom</f:facet>
+                                #{row.name}
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">Prix de départ</f:facet>
+                                #{row.price}
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">Enchère Finale</f:facet>
+                                 #{listeArticleBean.findBestBet(row.id)}
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">Option</f:facet>
+                                <h:form>
+                                    <h:commandButton style="width: 100%;" value="Retirer du panier" action="#{panierBean.deleteArticle(row.id)}"/>
+                                </h:form>
+                            </h:column>
+                        </h:dataTable>
+                    </table>
+                <p>Total : #{panierBean.getPrix()}€</p>
+                <h:button style="width: 100%;" value="Valider"/>
             </fieldset>
         </div>
     </h:body>
