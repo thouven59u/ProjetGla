@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html">
+    <h:head>
+        <title>TODO supply a title</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link rel="stylesheet" href="newCascadeStyleSheet.css"></link>
+    </h:head>
+    <h:body>
+        <h:form>
+            <fieldset style="height: 95vh;width: 50%;margin: 0% 25%; overflow: auto">
+                <legend style="text-align: center">Formulaire de validation</legend>
+                <h1 style="text-align: center; margin-top: 5%">Quentin-La-Brocante</h1>
+                <h2 style="text-align: center;color: red">#{registrationBean.erreur}</h2>
+                <h3 style="width: 70%;margin: 5% 15% 0% 15%">Prénom* :</h3>
+                <h:inputText required="true" style="width: 70%;margin: 0% 15%" value="#{panierBean.prenom}"
+                             id="loginInput">#{panierBean.prenom}
+                </h:inputText>
+                <br/>
+                <h3 style="width: 70%;margin: 5% 15% 0% 15%">Nom* :</h3>
+                <h:inputText required="true" style="width: 70%;margin: 0% 15%" value="#{panierBean.nom}"
+                             id="nomInput">#{panierBean.nom}
+                </h:inputText>
+                <br/>
+                <h3 style="width: 70%;margin: 5% 15% 0% 15%">Adresse complète* :</h3>
+                <h:inputText required="true" style="width: 70%;margin: 0% 15%" value="#{panierBean.adresse}"
+                             id="adresseInput">#{panierBean.adresse}
+                </h:inputText>
+                <br/>
+                <h3 style="width: 70%;margin: 5% 15% 0% 15%">Code IBAN* :</h3>
+                <h:inputText required="true" style="width: 70%;margin: 0% 15%" value="#{panierBean.iban}"
+                             id="ibanInput">#{panierBean.iban}
+                </h:inputText>
+                <br/>
+                <h:commandButton style="width: 70%;margin: 1% 15% 0% 15%;padding: 1%"
+                    value="Valider commande" action="#{panierBean.validerPanier()}"/>
+                <h:button style="width: 70%;margin: 1% 15% 0% 15%;padding: 1%"
+                    value="Retour" outcome="test"/>
+                <div style="text-align: center;width: 100%">
+                    <span>* champ requis</span>
+                </div>
+            </fieldset>
+        </h:form>
+        <span style="position: absolute;right: 0;left: 0;text-align: center;padding-top: 10px">projet GLA 2020</span>
+    </h:body>
+</html>
