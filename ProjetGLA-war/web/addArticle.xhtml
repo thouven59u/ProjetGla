@@ -11,57 +11,56 @@ and open the template in the editor.
     <h:head>
         <title>Ajouter un article</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link rel="stylesheet" href="newCascadeStyleSheet.css"></link>
     </h:head>
     <h:body>
+        
         <h:form>
+            <div  class="fancy-border" style="height: 85vh;width: 90%;margin:auto">
+                <div id="header" style="text-align: center; margin-bottom: 4%">
+                  <a href="/" id="logoIndex1">Quentin-La-Brocante</a>
+                </div>
+                <h2 style="text-align: center;color: red">#{registrationBean.erreur}</h2>
+                <a href="test.xhtml" style="margin-left: 9.3%">Retour</a>
+                <div id="menuIndex" style="text-align: center;width: 80%" >
+                    <div style="height: 45vh; overflow: auto">
+                        <h3 style="width: 70.5%; margin: 2% 0% 0% 2.5%;">Name *:</h3> 
+                        <h:inputText style="width: 70%;margin: 0% 15%"  value="#{articleBean.name}"
+                                     id="nameInput">
+                        </h:inputText>
 
-            <fieldset>
-                <legend>Add an article</legend>
+                        <h3 style="width: 70.5%; margin: 2% 0% 0% 2.5%;">Description: </h3>
+                        <h:inputText style="width: 70%;margin: 0% 15%" value="#{articleBean.description}"
+                                     id="descriptionInput">
+                        </h:inputText>
 
-                Name: 
-                <h:inputText value="#{articleBean.name}"
-                             id="nameInput">
-                </h:inputText>
-                <br/>
+                        <h3 style="width: 70.5%; margin: 2% 0% 0% 2.5%;">Category* :</h3> 
+                        <h:selectOneMenu style="width: 70%;margin: 0% 15%" value = "#{articleBean.categorie}"> 
+                            <f:selectItem itemValue = "Informatique" itemLabel = "Informatique" /> 
+                            <f:selectItem itemValue = "Cinéma" itemLabel = "Cinéma" /> 
+                            <f:selectItem itemValue = "Litérature" itemLabel = "Litérature" /> 
+                            <f:selectItem itemValue = "Sport" itemLabel = "Sport" /> 
+                            <f:selectItem itemValue = "Loisir" itemLabel = "Loisir" />     
+                        </h:selectOneMenu>  
+                        <br/>
 
-                Description: 
-                <h:inputText value="#{articleBean.description}"
-                             id="descriptionInput">
-                </h:inputText>
-                <br/>
-                
-                Category: 
-                <h:selectOneMenu value = "#{articleBean.categorie}"> 
-                    <f:selectItem itemValue = "Informatique" itemLabel = "Informatique" /> 
-                    <f:selectItem itemValue = "Cinéma" itemLabel = "Cinéma" /> 
-                    <f:selectItem itemValue = "Litérature" itemLabel = "Litérature" /> 
-                    <f:selectItem itemValue = "Sport" itemLabel = "Sport" /> 
-                    <f:selectItem itemValue = "Loisir" itemLabel = "Loisir" />     
-                </h:selectOneMenu>  
-                <br/>
+                        <h3 style="width: 70.5%; margin: 2% 0% 0% 2.5%;">Prix :</h3> 
+                        <h:inputText style="width: 70%;margin: 0% 15%" value="#{articleBean.price}"
+                                     id="priceInput">
+                        </h:inputText>
 
-                Price: 
-                <h:inputText value="#{articleBean.price}"
-                             id="priceInput">
-                </h:inputText>
-                <br/>
-                
-                Ending date of the auction: 
-                <h:inputText value="#{articleBean.auctionEnd}"
-                             id="auctionEndInput">
-                    <f:convertDateTime pattern="yyyy-MM-dd hh:mm"/>
-                </h:inputText>
-                <br/>
-                
-                <br/>
-                    
-
-                <h:commandButton value="Ajouter article" 
-                                 action="#{articleBean.createArticle()}"/>
-                <h:button value="Retour à mon compte"
-                                 outcome="test"  />
-
-            </fieldset>
+                        <h3 style="width: 70.5%; margin: 2% 0% 0% 2.5%;">Ending date of the auction :</h3> 
+                        <h:inputText style="width: 70%;margin: 0% 15%" value="#{articleBean.auctionEnd}"
+                                     id="auctionEndInput">
+                            <f:convertDateTime pattern="yyyy-MM-dd hh:mm"/>
+                        </h:inputText>
+                    </div>
+                    <br/>
+                     <h:commandButton class="buttonIndex" value="Ajouter article"
+                                             style="width: 74%; margin: auto" 
+                                             action="#{articleBean.createArticle()}"/>
+                </div>
+            </div>
         </h:form>
     </h:body>
 </html>

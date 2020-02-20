@@ -4,30 +4,30 @@
       xmlns:h="http://java.sun.com/jsf/html">
     <h:head>
         <title>QuentinLaBrocante</title>
+        <link rel="stylesheet" href="newCascadeStyleSheet.css"></link>
     </h:head>
     <h:body>
-        <span style="position: absolute;bottom: 5%;right: 0;left: 0;text-align: center">projet GLA 2020</span>
         <h:form>
-            <fieldset style="height: 95vh;width: 50%;margin: 0% 25%">
-                <legend style="text-align: center">Login Form </legend>
-                <h1 style="text-align: center; margin-top: 15%">Quentin-La-Brocante</h1>
-                <h3 style="width: 70%;margin: 5% 15% 0% 15%">Login : </h3> 
-                <h:inputText style="width: 70%;margin: 0% 15%" value="#{authBean.login}"
-                             id="loginInput">
-                </h:inputText>
-                <br/>
-                <h3 style="width: 70%;margin: 5% 15% 0% 15%">Password :</h3> 
-                <h:inputSecret style="width: 70%;margin: 0% 15%" value="#{authBean.password}"
-                             id="passwordInput">
-                </h:inputSecret>
-                <br/>
-                <br/>
-                <h:commandButton style="width: 70%;margin: 1% 15% 0% 15%;padding: 1%"
-                    value="Submit" action="#{authBean.authenticateUser}"/>
-                <br/>
-                <h:button style="width: 70%;margin: 1% 15% 0% 15%;padding: 1%"
-                    value="S'inscrire" outcome="registrationStep1" />
-            </fieldset>
+            <div  class="fancy-border" style="height: 85vh;width: 90%;margin:auto">
+                <div id="header" style="text-align: center; margin-bottom: 4%">
+                  <a href="/" id="logoIndex1">Quentin-La-Brocante</a>
+                </div>
+                <div id="menuIndex" style="text-align: center; width: 80%">
+                       <h3 style="width: 70.5%; margin: 2% 0% 0% 2.5%;">Login : </h3> 
+                       <h:inputText style="width: 70%;margin: 0% 15%" value="#{authBean.login}"
+                                    id="loginInput">
+                       </h:inputText>
+                       <h3 style="width: 70.5%; margin: 2% 0% 0% 2.5%;">Password :</h3> 
+                       <h:inputSecret style="width: 70%;margin: 0% 15%" value="#{authBean.password}"
+                                    id="passwordInput">
+                       </h:inputSecret>
+                       <h:commandButton class="buttonIndex" style="width: 74%;margin: 1% 14% 0% 14%;padding: 1%"
+                           value="Submit" action="#{authBean.authenticateUser}"/>
+                       <br/>
+                       <h:button class="buttonIndex" style="width: 74%;margin: 1% 14% 0% 14%;padding: 1%"
+                           value="S'inscrire" outcome="registrationStep1" /> 
+                  </div>
+            </div>
         </h:form>
     </h:body>
 </html>
