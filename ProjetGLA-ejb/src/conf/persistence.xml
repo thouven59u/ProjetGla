@@ -7,6 +7,7 @@
     <class>entities.User</class>
     <class>entities.Article</class>
     <class>entities.UsersArticles</class>
+    <class>entities.Panier</class>
     <shared-cache-mode>ALL</shared-cache-mode>
     <properties>
       <property name="eclipselink.ddl-generation" value="create-or-extend-tables"/>
