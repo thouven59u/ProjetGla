@@ -35,9 +35,6 @@ public class ListeArticleBean {
     
     public boolean verifCreateur (long idArticle){
         if (articleBean.getAuthenticationManager().getUser() != null){
-            System.out.println(articleBean.getAuthenticationManager().getUser());
-            System.out.println(idArticle);
-            System.out.println(articleBean.getArticleById(idArticle).getUser());
             return articleBean.getAuthenticationManager().getUser().getUserId() == articleBean.getArticleById(idArticle).getUser().getUserId();
         } else {
             return false;
