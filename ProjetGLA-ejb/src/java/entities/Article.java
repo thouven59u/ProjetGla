@@ -128,5 +128,12 @@ public class Article implements Serializable{
     public void setUser(User user) {
         this.user = user;
     }
+
+    @Override
+    public String toString() {
+        return "Article{" + "id=" + id + ", user=" + user + ", name=" + name + ", categorie=" + categorie + '}';
+    }
+    
+    
     
 }
