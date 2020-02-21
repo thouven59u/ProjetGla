@@ -1,7 +1,8 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://java.sun.com/jsf/html">
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <title>QuentinLaBrocante</title>
         <link rel="stylesheet" href="newCascadeStyleSheet.css"></link>
@@ -14,13 +15,23 @@
                   <a href="/" id="logoIndex1">Quentin-La-Brocante</a>
                 </div>
                 <div id="menuIndex" style="text-align: center; width: 80%">
-                       <h3 style="width: 70.5%; margin: 2% 0% 0% 2.5%;">Identifiant : </h3> 
-                       <h:inputText style="width: 70%;margin: 0% 15%" value="#{authBean.login}"
-                                    id="loginInput">
-                       </h:inputText>
-                       <h3 style="width: 70.5%; margin: 2% 0% 0% 2.5%;">Mot de passe :</h3> 
-                       <h:inputSecret style="width: 70%;margin: 0% 15%" value="#{authBean.password}"
+                       <h3 style="width: 70.5%; margin: 2% 0% 0% 2.5%;">Identifiant : 
+                           <span class='messageError'><h:message for="loginInput" styleClass="errorBlock" /></span>
+                       </h3> 
+                        <h:inputText required="true" requiredMessage="La saisie de l'identifiant est obligatoire !"
+                                     validatorMessage="Votre l'identifiant doit contenir entre 3 à 12 caractères"
+                                     style="width: 70%;margin: 0% 15%" value="#{authBean.login}"
+                                     id="loginInput">
+                            <f:validateLength minimum="3" maximum="12" />
+                        </h:inputText>
+                       <h3 style="width: 70.5%; margin: 2% 0% 0% 2.5%;">Mot de passe :
+                       <span class='messageError'><h:message for="passwordInput" styleClass="errorBlock" /></span>
+                       </h3> 
+                       <h:inputSecret required="true" requiredMessage="La saisie du mot de passe est obligatoire !"
+                                      validatorMessage="Votre  mot de passe doit contenir entre 3 à 12 caractères"
+                           style="width: 70%;margin: 0% 15%" value="#{authBean.password}"
                                     id="passwordInput">
+                            <f:validateLength minimum="3" maximum="12" />
                        </h:inputSecret>
                        <h:commandButton class="buttonIndex" style="width: 74%;margin: 1% 14% 0% 14%;padding: 1%"
                            value="Se Connecter" action="#{authBean.authenticateUser}"/>

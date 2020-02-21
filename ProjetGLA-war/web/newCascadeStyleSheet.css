@@ -183,7 +183,6 @@ content: "Quentin-La-Brocante";
 }
 
 #menuIndex input, select {
-    text-transform: uppercase;
   font-family: 'Squada One', cursive;
   font-weight: 800;
   display: block;
@@ -361,4 +360,10 @@ th {
 
 .active {
      color: #d90075 !important;
+}
+
+#menuIndex h3 .messageError {
+    display: block;
+    font-size: 18px;
+    color : #d90075;
 }
