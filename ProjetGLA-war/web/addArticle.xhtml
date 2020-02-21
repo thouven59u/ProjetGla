@@ -24,17 +24,22 @@ and open the template in the editor.
                 <a href="test.xhtml" style="margin-left: 9.3%">Retour</a>
                 <div id="menuIndex" style="text-align: center;width: 80%" >
                     <div style="height: 45vh; overflow: auto">
-                        <h3 style="width: 70.5%; margin: 2% 0% 0% 2.5%;">Name *:</h3> 
-                        <h:inputText style="width: 70%;margin: 0% 15%"  value="#{articleBean.name}"
+                        <h3 style="width: 70.5%; margin: 2% 0% 0% 2.5%;">Name* :
+                            <span class='messageError'><h:message for="nameInput" styleClass="errorBlock" /></span>
+                        </h3> 
+                        <h:inputText required="true" requiredMessage="La saisie du nom est obligatoire !"
+                                     validatorMessage="Votre mot de passe doit contenir au minimum 3 caractères"
+                                     style="width: 70%;margin: 0% 15%"  value="#{articleBean.name}"
                                      id="nameInput">
+                            <f:validateLength minimum="3" />
                         </h:inputText>
 
-                        <h3 style="width: 70.5%; margin: 2% 0% 0% 2.5%;">Description: </h3>
+                        <h3 style="width: 70.5%; margin: 2% 0% 0% 2.5%;">Description :</h3>
                         <h:inputText style="width: 70%;margin: 0% 15%" value="#{articleBean.description}"
                                      id="descriptionInput">
                         </h:inputText>
 
-                        <h3 style="width: 70.5%; margin: 2% 0% 0% 2.5%;">Category* :</h3> 
+                        <h3 style="width: 70.5%; margin: 2% 0% 0% 2.5%;">Categorie* :</h3> 
                         <h:selectOneMenu style="width: 70%;margin: 0% 15%" value = "#{articleBean.categorie}"> 
                             <f:selectItem itemValue = "Informatique" itemLabel = "Informatique" /> 
                             <f:selectItem itemValue = "Cinéma" itemLabel = "Cinéma" /> 
@@ -44,13 +49,21 @@ and open the template in the editor.
                         </h:selectOneMenu>  
                         <br/>
 
-                        <h3 style="width: 70.5%; margin: 2% 0% 0% 2.5%;">Prix :</h3> 
-                        <h:inputText style="width: 70%;margin: 0% 15%" value="#{articleBean.price}"
+                        <h3 style="width: 70.5%; margin: 2% 0% 0% 2.5%;">Prix* :
+                            <span class='messageError'><h:message for="priceInput" styleClass="errorBlock" /></span>
+                        </h3> 
+                        <h:inputText required="true" requiredMessage="La saisie du pirx est obligatoire !"
+                                     validatorMessage="Votre prix doit etre au minimum de 1€"
+                                     style="width: 70%;margin: 0% 15%" value="#{articleBean.price}"
                                      id="priceInput">
+                            <f:validateDoubleRange minimum="1"/>
                         </h:inputText>
 
-                        <h3 style="width: 70.5%; margin: 2% 0% 0% 2.5%;">Ending date of the auction :</h3> 
-                        <h:inputText style="width: 70%;margin: 0% 15%" value="#{articleBean.auctionEnd}"
+                        <h3 style="width: 70.5%; margin: 2% 0% 0% 2.5%;">date de find de l'enchère* :
+                            <span class='messageError'><h:message for="auctionEndInput" styleClass="errorBlock" /></span>
+                        </h3> 
+                        <h:inputText required="true" requiredMessage="La saisie d'une date est obligatoire !"
+                                     style="width: 70%;margin: 0% 15%" value="#{articleBean.auctionEnd}"
                                      id="auctionEndInput">
                             <f:convertDateTime pattern="yyyy-MM-dd hh:mm"/>
                         </h:inputText>
