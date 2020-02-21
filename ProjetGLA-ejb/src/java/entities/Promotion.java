@@ -29,6 +29,10 @@ import javax.persistence.Table;
     @NamedQuery(
             name  = "Promotion.getAll",
             query = "SELECT p FROM Promotion p"
+    ),
+    @NamedQuery(
+            name  = "Promotion.getByArticleId",
+            query = "SELECT p FROM Promotion p WHERE p.article = :id"
     )
 })
 public class Promotion {

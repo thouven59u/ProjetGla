@@ -18,4 +18,5 @@ public interface PromotionManager {
     public void deleteAll();
     public void createPromotions();
     public List<Promotion> getAll();
+    public Promotion getByArticleId(long id);
 }

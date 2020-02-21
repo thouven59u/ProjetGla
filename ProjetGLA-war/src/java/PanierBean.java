@@ -65,6 +65,10 @@ public class PanierBean {
     public double getPrix(){
         return panierManager.getPrix(this.cUsr.getUser().getUserId());
     }
+    
+    public double getPrixPromotions(){
+        return panierManager.getPrixPromotions(this.cUsr.getUser().getUserId());
+    }
 
     public String getNom() {
         return nom;

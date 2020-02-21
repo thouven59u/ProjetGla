@@ -19,5 +19,6 @@ public interface PanierManager {
     public void addArticle(long id, long idArticle);
     public void deleteArticle(long id, long idArticle);
     public List<Article> getArticles(long id);
-    public double getPrix(Long userId);
+    public double getPrix(long userId);
+    public double getPrixPromotions(long id);
 }

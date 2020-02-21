@@ -5,16 +5,20 @@
  */
 package panier;
 
+import article.ArticleManager;
 import entities.Article;
 import entities.Panier;
+import entities.Promotion;
 import entities.UsersArticles;
 import java.util.ArrayList;
 import java.util.List;
+import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import promotion.PromotionManager;
 
 /**
  *
@@ -25,6 +29,11 @@ public class PanierManagerBean implements PanierManager {
 
     @PersistenceContext(unitName = "truc-PU")
     private EntityManager em;
+    
+    @EJB
+    private PromotionManager promotionBean;
+    @EJB
+    private ArticleManager articleBean;
     
     @Override
     public void addArticle(long id, long idArticle) {
@@ -72,7 +81,7 @@ public class PanierManagerBean implements PanierManager {
     // "Insert Code > Add Business Method")
 
     @Override
-    public double getPrix(Long userId) {
+    public double getPrix(long userId) {
         double total = 0;
         try{
             Query q = em.createNamedQuery("Panier.find");
@@ -90,5 +99,48 @@ public class PanierManagerBean implements PanierManager {
             
         }
         return total;
+    }
+    
+    @Override
+    public double getPrixPromotions(long id){
+        double total = 0;
+        try{
+            Query q = em.createNamedQuery("Panier.find");
+            q.setParameter("id", id);
+            Panier p = (Panier)q.getSingleResult();
+
+            for(Long l : p.getIdArticles()){
+                Query q2 = em.createNamedQuery("Users_Articles.find");
+                q2.setParameter("aId", l);
+                q2.setParameter("uId", id);
+                UsersArticles ua = (UsersArticles)q2.getSingleResult();
+                total += (ua.getEnchere() + this.getPrixPromotionLivraison(l) - this.getPromotionReduction(l));
+            }
+        }catch(NoResultException e){
+                
+        }
+        return total;
+    }
+    
+    public double getPrixPromotionLivraison(long id){
+        Promotion p = promotionBean.getByArticleId(id);
+        if(p != null){
+            if(p.getType().equals("LIVRAISON"))
+                return 0.0;
+        }
+        return 5.0;
+    }
+    
+    public double getPromotionReduction(long id){
+        Promotion p = promotionBean.getByArticleId(id);
+        UsersArticles a = articleBean.findBestBet(id);
+        double res = 0; 
+        if(p != null && a != null){
+            if(p.getType().equals("REDUCTION")){
+                res = Math.round( (a.getEnchere()*0.10)*100.0 ) / 100.0; //Permet de récupérer 10% de la valeur de l'article et de l'arrondir 2 chiffres après la virgule
+                return res;
+            }
+        }
+        return 0.0;
     }
 }

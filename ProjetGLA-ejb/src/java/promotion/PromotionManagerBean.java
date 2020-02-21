@@ -10,6 +10,7 @@ import entities.Promotion;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
@@ -56,5 +57,19 @@ public class PromotionManagerBean implements PromotionManager {
     @Override
     public List<Promotion> getAll() {
         return em.createNamedQuery("Promotion.getAll").getResultList();
+    }
+    
+    @Override
+    public Promotion getByArticleId(long id){
+        try{
+            Query qq = em.createNamedQuery("Article.find");
+            qq.setParameter("id", id);
+            Article a = (Article)qq.getSingleResult();
+            Query q = em.createNamedQuery("Promotion.getByArticleId");
+            q.setParameter("id", a);
+            return (Promotion)q.getSingleResult();
+        }catch(NoResultException e){
+            return null;
+        }
     }
 }
