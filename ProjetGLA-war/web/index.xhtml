@@ -7,22 +7,23 @@
         <link rel="stylesheet" href="newCascadeStyleSheet.css"></link>
     </h:head>
     <h:body>
+            <span style="position: absolute; bottom: 0;right: 1%">V1.0.0</span>
         <h:form>
             <div  class="fancy-border" style="height: 85vh;width: 90%;margin:auto">
                 <div id="header" style="text-align: center; margin-bottom: 4%">
                   <a href="/" id="logoIndex1">Quentin-La-Brocante</a>
                 </div>
                 <div id="menuIndex" style="text-align: center; width: 80%">
-                       <h3 style="width: 70.5%; margin: 2% 0% 0% 2.5%;">Login : </h3> 
+                       <h3 style="width: 70.5%; margin: 2% 0% 0% 2.5%;">Identifiant : </h3> 
                        <h:inputText style="width: 70%;margin: 0% 15%" value="#{authBean.login}"
                                     id="loginInput">
                        </h:inputText>
-                       <h3 style="width: 70.5%; margin: 2% 0% 0% 2.5%;">Password :</h3> 
+                       <h3 style="width: 70.5%; margin: 2% 0% 0% 2.5%;">Mot de passe :</h3> 
                        <h:inputSecret style="width: 70%;margin: 0% 15%" value="#{authBean.password}"
                                     id="passwordInput">
                        </h:inputSecret>
                        <h:commandButton class="buttonIndex" style="width: 74%;margin: 1% 14% 0% 14%;padding: 1%"
-                           value="Submit" action="#{authBean.authenticateUser}"/>
+                           value="Se Connecter" action="#{authBean.authenticateUser}"/>
                        <br/>
                        <h:button class="buttonIndex" style="width: 74%;margin: 1% 14% 0% 14%;padding: 1%"
                            value="S'inscrire" outcome="registrationStep1" /> 
