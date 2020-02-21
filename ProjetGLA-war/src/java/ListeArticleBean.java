@@ -63,8 +63,7 @@ public class ListeArticleBean {
         return this.articleBean.myArticles(u.getUserId());
     }
     
-    public String delArticle(long id){
-        
+    public String delArticle(long id){        
         articleBean.delArticle(id);
         return "listeArticle";
     }

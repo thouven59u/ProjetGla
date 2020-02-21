@@ -5,9 +5,13 @@ import entities.Article;
 import entities.User;
 import java.util.List;
 import javax.annotation.PostConstruct;
+import javax.annotation.Resource;
 import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
+import javax.inject.Inject;
 import javax.inject.Named;
+import javax.jms.Destination;
+import javax.jms.JMSContext;
 import panier.PanierManager;
 
 /*
@@ -26,8 +30,17 @@ public class PanierBean {
     @EJB
     private AuthenticationManager cUsr;
     @EJB
-    private PanierManager panierManager;
+    private PanierManager panierManager;    
+    /*
+    @Inject
+    JMSContext context;
     
+    @Resource(lookup = "jms/LivraisonQueue")
+    Destination livraisonQueue;
+    
+    @Resource(lookup = "jms/FacturationQueue")
+    Destination facturationQueue;
+    */
     private User u;
     private String nom, prenom, adresse, iban;
     
@@ -100,7 +113,20 @@ public class PanierBean {
 
     public void setIban(String iban) {
         this.iban = iban;
+    }    
+    
+    public void validerPanier(){
+        /*sendMessageLivraison("Livraison à : "+u.getAdresse());
+        sendMessageFacturation("Facturation à : "+u.getIban());*/
     }
+    
+    /*public void sendMessageLivraison(String message) {
+        context.createProducer().send(livraisonQueue, message);
+    }
+    
+    public void sendMessageFacturation(String message) {
+        context.createProducer().send(facturationQueue, message);
+    }*/
     
     
 }

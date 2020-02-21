@@ -68,9 +68,8 @@ public class ArticleManagerBean implements ArticleManager {
 
     @Override
     public boolean delArticle(long id) {
-        Query q = em.createNamedQuery("Article.delById");
-        q.setParameter("id", id);
-        return q.executeUpdate() == 1 ? true : false;
+        em.remove(em.createNamedQuery("Article.find").setParameter("id", id).getSingleResult());
+        return true;
     }
     
     @Override
