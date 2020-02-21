@@ -10,6 +10,7 @@ import javax.annotation.PreDestroy;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
@@ -31,14 +32,17 @@ public class AuthenticationManagerBean implements AuthenticationManager {
     public User authenticate(String login, String mdp) {
         Query q = em.createNamedQuery("User.findByLogin");
         q.setParameter("login", login);
-        User u = (User) q.getSingleResult();
-        if (BCrypt.checkpw(mdp, u.getPassword())) {
-            this.connectedUser.setUser(u);
-        }
-        else {
-            this.connectedUser.setUser(null);
-        }
-            
+        try {
+            User u = (User) q.getSingleResult();
+            if (BCrypt.checkpw(mdp, u.getPassword())) {
+                this.connectedUser.setUser(u);
+            }
+            else {
+                this.connectedUser.setUser(null);
+            }
+        }catch (NoResultException ex) {
+            this.connectedUser.setUser(null); 
+        } 
         return this.connectedUser.getUser();
     }
     
