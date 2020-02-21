@@ -42,8 +42,11 @@ public class AuthBean {
     
     public String authenticateUser(){
         User u = authManager.authenticate(this.login, this.password);
-        //System.out.println("INFOOO"+u+ "\n\n\n");
-        return "test";
+        if(u!=null){
+            return "test";
+        }else{
+            return "index";
+        }
     }
     
 }

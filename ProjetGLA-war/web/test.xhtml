@@ -10,17 +10,17 @@
     </h:head>
     <h:body>
         <div id="menuIndex" style="width: 35%;height: 90.7vh;display: inline-block;padding: 0; float: left; ">
-            <img width="90%" src="https://img.pngio.com/men-profile-icon-png-image-free-download-searchpngcom-png-man-grey-715_657.png"/>
+            <img width="80%" src="https://cdn.iconscout.com/icon/free/png-512/jenkins-2-458320.png"/>
             <div style="width: 70%;margin: 1% 15% 0% 15%;padding: 1%">
-                <h3 class="FontBrocante" style="margin: auto">Login : #{testBean.login}</h3>
+                <h3 class="FontBrocante" style="margin: auto">#{testBean.login}</h3>
                 <h:form>
-                    <h:commandButton class="buttonCompte" style="width: 100%;"
-                    value="Deconexion" action="#{testBean.logout}"/> 
-                    <h:button class="buttonCompte" style="width: 100%;"
+                    <h:commandButton class="buttonCompte" style="width: 100%;margin: 0"
+                    value="Déconnexion " action="#{testBean.logout}"/> 
+                    <h:button class="buttonCompte" style="width: 100%;margin: 0"
                         value="Mes enchères" outcome="mesArticle"  />
-                    <h:button class="buttonCompte" style="width: 100%;"
+                    <h:button class="buttonCompte" style="width: 100%;margin: 0"
                               value="Ajouter une enchère" outcome="addArticle" />
-                    <h:button class="buttonCompte" style="width: 100%;"
+                    <h:button class="buttonCompte" style="width: 100%;margin: 0"
                         value="Liste des enchères" outcome="listeArticle" />
                 </h:form>
             </div>
@@ -31,7 +31,7 @@
                     Vos enchères remportés
                 </h3>
                 <div style="width: 100%;height: 35vh;overflow: auto">
-                    <h:dataTable var="row" style="width: 100%;height: 25vh;overflow: auto"
+                    <h:dataTable var="row" style="width: 100%;height: 35vh;overflow: auto"
                                  value="#{testBean.articelWin()}"
                                  border="1" >
                         <h:column>
@@ -70,8 +70,8 @@
                 <h3 class="FontBrocante">
                     Votre panier <span>Total : #{panierBean.getPrix()}€</span>
                 </h3>
-                <div style="width: 100%;height:30vh;overflow: auto">
-                    <h:dataTable var="row" style="width: 100%;"
+                <div style="width: 100%;height:28vh;overflow: auto">
+                    <h:dataTable var="row" style="width: 100%;height: 28vh;overflow: auto"
                                  value="#{panierBean.getArticles()}"
                                  border="1" >
                         <h:column>
@@ -98,7 +98,7 @@
                                 </h:column>
                     </h:dataTable>
                 </div>                
-                <h:button style="width: 100%;" value="Valider panier" outcome="validerPanier"/>
+                <h:button style="width: 100%;" class="buttonCompte" value="Valider mon panier" outcome="validerPanier"/>
             </div>
         </div>
     </h:body>

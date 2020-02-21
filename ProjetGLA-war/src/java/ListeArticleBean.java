@@ -8,6 +8,9 @@ import authentication.*;
 import entities.Article;
 import entities.User;
 import entities.UsersArticles;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import javax.annotation.PostConstruct;
@@ -147,5 +150,10 @@ public class ListeArticleBean {
     
     public void setArticles(List<Article> la){
         this.articles =la;
+    }
+    
+    public String toStringDate(Date d) throws ParseException{ 
+        DateFormat formatter = new SimpleDateFormat("dd/MM/yyy hh:mm");
+        return formatter.format(d);
     }
 }
