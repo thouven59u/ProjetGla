@@ -36,7 +36,7 @@ public class ArticleBean {
         this.name = "";
         this.description = "";
         this.categorie = "Informatique";
-        this.price = 0.0;
+        this.price = 1.0;
         this.auctionEnd = new Date();
     }
 

@@ -14,40 +14,67 @@
                 <div id="header" style="text-align: center; margin-bottom: 4%">
                   <a href="/" id="logoIndex1">Quentin-La-Brocante</a>
                 </div>
-                <h2 style="text-align: center;color: red">#{registrationBean.erreur}</h2>
+                <a href="index.xhtml" style="margin-left: 9.3%">Retour</a>
                 <div id="menuIndex" style="text-align: center; width: 80%" >
                     <div style="height: 45vh;overflow: auto">
-                        <h3 style="width: 70.5%; margin: 2% 0% 0% 2.5%;">identifiant * :</h3>
-                        <h:inputText required="true" style="width: 70%;margin: 0% 15%" value="#{registrationBean.login}"
+                        <h3 style="width: 70.5%; margin: 2% 0% 0% 2.5%;">identifiant * :
+                            <span class='messageError'><h:message for="loginInput" styleClass="errorBlock" /></span>
+                        </h3>
+                        <h:inputText required="true" requiredMessage="La saisie de l'identifiant est obligatoire !"
+                                     validatorMessage="Votre l'identifiant doit contenir entre 3 à 12 caractères"
+                                     style="width: 70%;margin: 0% 15%" value="#{registrationBean.login}"
                                      id="loginInput">
+                            <f:validateLength minimum="3" maximum="12" />
                         </h:inputText>
                         <br/>
-                        <h3 style="width: 70.5%; margin: 2% 0% 0% 2.5%;">Mot de passe* :</h3> 
-                        <h:inputSecret required="true" style="width: 70%;margin: 0% 15%" value="#{registrationBean.password}"
+                        <h3 style="width: 70.5%; margin: 2% 0% 0% 2.5%;">Mot de passe* :
+                            <span class='messageError'><h:message for="passwordInput" styleClass="errorBlock" /></span>
+                        </h3>
+                        <h:inputSecret required="true" requiredMessage="La saisie du mot de passe est obligatoire !"
+                                       validatorMessage="Votre mot de passe doit contenir entre 3 à 12 caractères"
+                                       style="width: 70%;margin: 0% 15%" value="#{registrationBean.password}"
                                      id="passwordInput">
+                            <f:validateLength minimum="3" maximum="12" />
                         </h:inputSecret>
-                        <h3 style="width: 70.5%; margin: 2% 0% 0% 2.5%;">Confirme le mot de passe* :</h3> 
-                        <h:inputSecret required="true" style="width: 70%;margin: 0% 15%" value="#{registrationBean.conf}"
+                        <h3 style="width: 70.5%; margin: 2% 0% 0% 2.5%;">Confirme le mot de passe* :
+                            <span class='messageError'><h:message for="confpasswordInput" styleClass="errorBlock" /></span>
+                        </h3> 
+                        <h:inputSecret required="true" requiredMessage="La saisie de la confirmation du mot de passe est obligatoire !"
+                                       style="width: 70%;margin: 0% 15%" value="#{registrationBean.conf}"
                                      id="confpasswordInput">
                         </h:inputSecret>
                         <br/>
-                        <h3 style="width: 70.5%; margin: 2% 0% 0% 2.5%;">Prénom* :</h3>
-                        <h:inputText required="true" style="width: 70%;margin: 0% 15%" value="#{registrationBean.prenom}"
+                        <h3 style="width: 70.5%; margin: 2% 0% 0% 2.5%;">Prénom* :
+                            <span class='messageError'><h:message for="prenomInput" styleClass="errorBlock" /></span>
+                        </h3>
+                        <h:inputText required="true" requiredMessage="La saisie du prénom est obligatoire !"
+                                     style="width: 70%;margin: 0% 15%" value="#{registrationBean.prenom}"
                                      id="prenomInput">
                         </h:inputText>
                         <br/>
-                        <h3 style="width: 70.5%; margin: 2% 0% 0% 2.5%;">Nom* :</h3>
-                        <h:inputText required="true" style="width: 70%;margin: 0% 15%" value="#{registrationBean.nom}"
+                        <h3 style="width: 70.5%; margin: 2% 0% 0% 2.5%;">Nom* :
+                            <span class='messageError'><h:message for="nomInput" styleClass="errorBlock" /></span>
+                        </h3>
+                        <h:inputText required="true" requiredMessage="La saisie du nom est obligatoire !"
+                                     style="width: 70%;margin: 0% 15%" value="#{registrationBean.nom}"
                                      id="nomInput">
                         </h:inputText>
                         <br/>
-                        <h3 style="width: 70.5%; margin: 2% 0% 0% 2.5%;">Adresse complète* :</h3>
-                        <h:inputText required="true" style="width: 70%;margin: 0% 15%" value="#{registrationBean.adresse}"
+                        <h3 style="width: 70.5%; margin: 2% 0% 0% 2.5%;">Adresse complète* :
+                            <span class='messageError'><h:message class='messageError' for="adresseInput" styleClass="errorBlock" /></span>
+                        </h3>
+                        <h:inputText required="true" requiredMessage="La saisie de l'adresse est obligatoire !"
+                                     style="width: 70%;margin: 0% 15%" value="#{registrationBean.adresse}"
                                      id="adresseInput">
                         </h:inputText>
                         <br/>
-                        <h3 style="width: 70.5%; margin: 2% 0% 0% 2.5%;">Code IBAN* :</h3>
-                        <h:inputText required="true" style="width: 70%;margin: 0% 15%" value="#{registrationBean.iban}"
+                        <h3 style="width: 70.5%; margin: 2% 0% 0% 2.5%;">Code IBAN* :
+                            <span class='messageError'>
+                                <h:message for="ibanInput" styleClass="errorBlock" />
+                            </span>
+                        </h3>
+                        <h:inputText required="true" requiredMessage="La saisie de l'IBAN est obligatoire !"
+                                     style="width: 70%;margin: 0% 15%" value="#{registrationBean.iban}"
                                      id="ibanInput">
                         </h:inputText>
                         <br/>
