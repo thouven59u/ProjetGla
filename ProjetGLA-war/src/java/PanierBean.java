@@ -4,6 +4,9 @@ import authentication.AuthenticationManager;
 import entities.Article;
 import entities.User;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
 import javax.ejb.EJB;
@@ -13,6 +16,8 @@ import javax.inject.Named;
 import javax.jms.Destination;
 import javax.jms.JMSContext;
 import panier.PanierManager;
+import panier.ReceptionFacture;
+import panier.ReceptionLivraison;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -30,7 +35,10 @@ public class PanierBean {
     @EJB
     private AuthenticationManager cUsr;
     @EJB
-    private PanierManager panierManager;    
+    private PanierManager panierManager;  
+    
+    private ReceptionFacture rFacture;
+    private ReceptionLivraison rLivraison;
     
     @Inject
     JMSContext context;
@@ -51,6 +59,8 @@ public class PanierBean {
         this.prenom = u.getPrenom();
         this.adresse = u.getAdresse();
         this.iban = u.getIban();
+        this.rFacture = new ReceptionFacture();
+        this.rLivraison = new ReceptionLivraison();
     }
 
     public User getU() {
@@ -115,9 +125,15 @@ public class PanierBean {
         this.iban = iban;
     }    
     
-    public void validerPanier(){
+    public String validerPanier(){
         sendMessageLivraison("Livraison à : "+u.getAdresse());
         sendMessageFacturation("Facturation à : "+u.getIban());
+        try {
+            TimeUnit.SECONDS.sleep(2);
+        } catch (InterruptedException ex) {
+            Logger.getLogger(PanierBean.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return "feedBack";
     }
     
     public void sendMessageLivraison(String message) {
@@ -128,5 +144,14 @@ public class PanierBean {
         context.createProducer().send(facturationQueue, message);
     }
     
+    public String getRecepLivraison(){
+        System.out.println("STRING LIVRAISON : "+this.panierManager.getRecepLivraison());
+        return this.panierManager.getRecepLivraison();
+    }
     
+    public String getRecepFacturation(){
+        System.out.println("STRING FACTURE : "+this.panierManager.getRecepFacture());
+        return this.panierManager.getRecepFacture();
+    }
+   
 }

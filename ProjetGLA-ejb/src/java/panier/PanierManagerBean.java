@@ -35,6 +35,8 @@ public class PanierManagerBean implements PanierManager {
     @EJB
     private ArticleManager articleBean;
     
+    String recepFacture, recepLivraison;
+    
     @Override
     public void addArticle(long id, long idArticle) {
         Query q = em.createNamedQuery("Panier.find");
@@ -143,4 +145,26 @@ public class PanierManagerBean implements PanierManager {
         }
         return 0.0;
     }
+
+    @Override
+    public String getRecepFacture() {
+        return recepFacture;
+    }
+
+    @Override
+    public void setRecepFacture(String s) {
+        this.recepFacture = s;
+    }
+
+    @Override
+    public String getRecepLivraison() {
+        return recepLivraison;
+    }
+
+    @Override
+    public void setRecepLivraison(String s) {
+        this.recepLivraison = s;
+    }
+    
+    
 }

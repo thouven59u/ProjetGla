@@ -13,6 +13,9 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.concurrent.TimeUnit;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.component.UIComponent;
@@ -65,7 +68,7 @@ public class ListeArticleBean {
     
     public String delArticle(long id){        
         articleBean.delArticle(id);
-        return "listeArticle";
+        return "test";
     }
     
     public String encherir(long id){

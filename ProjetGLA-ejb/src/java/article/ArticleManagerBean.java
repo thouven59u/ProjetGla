@@ -15,6 +15,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import authentication.*;
+import entities.Promotion;
 import entities.UsersArticles;
 import java.util.ArrayList;
 import javax.ejb.EJBException;
@@ -68,15 +69,40 @@ public class ArticleManagerBean implements ArticleManager {
 
     @Override
     public boolean delArticle(long id) {
+        Query q;
+        try{
+            q = em.createNamedQuery("Users_Articles.findArticle").setParameter("articleId", id);
+            List<UsersArticles> lua = q.getResultList();
+            for(UsersArticles ua : lua){
+                em.remove(ua);
+            }
+        }catch(NoResultException e){}
+        
+        q = em.createNamedQuery("Article.find").setParameter("id", id);
+        Article a = (Article)q.getSingleResult();
+        
+        try{
+            q = em.createNamedQuery("Promotion.getByArticleId").setParameter("id", a);
+            Promotion p = (Promotion)q.getSingleResult();
+            em.remove(p);
+        }catch(NoResultException e){}
+        
+        em.remove(a);
+        /*
         em.remove(em.createNamedQuery("Article.find").setParameter("id", id).getSingleResult());
+        */
         return true;
     }
     
     @Override
     public Article getArticleById(long id){
-        Query q = em.createNamedQuery("Article.find");
-        q.setParameter("id", id);
-        return (Article) q.getSingleResult();
+        try{
+            Query q = em.createNamedQuery("Article.find");
+            q.setParameter("id", id);
+            return (Article) q.getSingleResult();
+        }catch(NoResultException e){
+            return null;
+        }
     }
     
     @Override

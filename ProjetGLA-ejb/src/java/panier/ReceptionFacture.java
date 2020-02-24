@@ -7,6 +7,7 @@ package panier;
 
 import javax.annotation.Resource;
 import javax.ejb.ActivationConfigProperty;
+import javax.ejb.EJB;
 import javax.ejb.MessageDriven;
 import javax.ejb.MessageDrivenContext;
 import javax.jms.JMSException;
@@ -27,14 +28,14 @@ public class ReceptionFacture implements MessageListener{
     @Resource
     private MessageDrivenContext context;
     
-    String receptionFacture;
+    @EJB
+    PanierManager panierBean;
 
     @Override
     public void onMessage(Message message) {
         try {
            String res = message.getBody(String.class);
-           receptionFacture = res;
-           System.out.println("FACTURE : "+res);
+           panierBean.setRecepFacture(res);
         } catch (JMSException jmse) {
             jmse.printStackTrace();
             context.setRollbackOnly();

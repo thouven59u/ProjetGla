@@ -21,4 +21,8 @@ public interface PanierManager {
     public List<Article> getArticles(long id);
     public double getPrix(long userId);
     public double getPrixPromotions(long id);
+    public void setRecepFacture(String s);
+    public void setRecepLivraison(String s);
+    public String getRecepFacture();
+    public String getRecepLivraison();
 }
