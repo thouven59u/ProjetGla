@@ -31,16 +31,16 @@ public class PanierBean {
     private AuthenticationManager cUsr;
     @EJB
     private PanierManager panierManager;    
-    /*
+    
     @Inject
     JMSContext context;
     
-    @Resource(lookup = "jms/LivraisonQueue")
+    @Resource(lookup = "jms/OrderQueue")
     Destination livraisonQueue;
     
     @Resource(lookup = "jms/FacturationQueue")
     Destination facturationQueue;
-    */
+    
     private User u;
     private String nom, prenom, adresse, iban;
     
@@ -116,17 +116,17 @@ public class PanierBean {
     }    
     
     public void validerPanier(){
-        /*sendMessageLivraison("Livraison à : "+u.getAdresse());
-        sendMessageFacturation("Facturation à : "+u.getIban());*/
+        sendMessageLivraison("Livraison à : "+u.getAdresse());
+        sendMessageFacturation("Facturation à : "+u.getIban());
     }
     
-    /*public void sendMessageLivraison(String message) {
+    public void sendMessageLivraison(String message) {
         context.createProducer().send(livraisonQueue, message);
     }
     
     public void sendMessageFacturation(String message) {
         context.createProducer().send(facturationQueue, message);
-    }*/
+    }
     
     
 }
