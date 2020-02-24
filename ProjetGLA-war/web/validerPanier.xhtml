@@ -16,66 +16,87 @@ and open the template in the editor.
     </h:head>
     <h:body>
         <h:form>
-            <fieldset style="height: 95vh;width: 50%;margin: 0% 25%; overflow: auto">
-                <legend style="text-align: center">Formulaire de validation</legend>
-                <h1 style="text-align: center; margin-top: 5%">Quentin-La-Brocante</h1>
-                <h2 style="text-align: center;color: red">#{registrationBean.erreur}</h2>
-                <h3 style="width: 70%;margin: 5% 15% 0% 15%">Prénom* :</h3>
-                <h:inputText required="true" style="width: 70%;margin: 0% 15%" value="#{panierBean.prenom}"
-                             id="loginInput">#{panierBean.prenom}
-                </h:inputText>
-                <br/>
-                <h3 style="width: 70%;margin: 5% 15% 0% 15%">Nom* :</h3>
-                <h:inputText required="true" style="width: 70%;margin: 0% 15%" value="#{panierBean.nom}"
-                             id="nomInput">#{panierBean.nom}
-                </h:inputText>
-                <br/>
-                <h3 style="width: 70%;margin: 5% 15% 0% 15%">Adresse complète* :</h3>
-                <h:inputText required="true" style="width: 70%;margin: 0% 15%" value="#{panierBean.adresse}"
-                             id="adresseInput">#{panierBean.adresse}
-                </h:inputText>
-                <br/>
-                <h3 style="width: 70%;margin: 5% 15% 0% 15%">Code IBAN* :</h3>
-                <h:inputText required="true" style="width: 70%;margin: 0% 15%" value="#{panierBean.iban}"
-                             id="ibanInput">#{panierBean.iban}
-                </h:inputText>
-                <br/>
-                <br/>
-                <h:dataTable var="row" style="width: 100%;height: 10vh;overflow: auto"
-                             value="#{panierBean.getArticles()}"
-                                 border="1" >
-                    <h:column>
-                            <f:facet name="header">Article</f:facet>
-                            #{row.name}
-                    </h:column>
-                    <h:column>
-                            <f:facet name="header">Prix d'achat</f:facet>
-                            #{listeArticleBean.findBestBet(row.id)}
-                    </h:column>
-                    <h:column>
-                            <f:facet name="header">Livraison</f:facet>
-                            #{promotionBean.getPromotionLivraison(row.id)}€
-                    </h:column>
-                    <h:column>
-                            <f:facet name="header">Réduction</f:facet>
-                            -#{promotionBean.getPromotionReduction(row.id)}€
-                    </h:column>
-                    <h:column>
-                            <f:facet name="header">Prix final article</f:facet>
-                            #{promotionBean.getPrixFinal(row.id)}€
-                    </h:column>
-                </h:dataTable>
-                <h3 class="FontBrocante">
-                    Votre panier <span>Total : #{panierBean.getPrixPromotions()}€</span>
-                </h3>
-                <h:commandButton style="width: 70%;margin: 1% 15% 0% 15%;padding: 1%"
-                    value="Valider commande" action="#{panierBean.validerPanier()}"/>
-                <h:button style="width: 70%;margin: 1% 15% 0% 15%;padding: 1%"
-                    value="Retour" outcome="test"/>
-                <div style="text-align: center;width: 100%">
-                    <span>* champ requis</span>
+           <div  class="fancy-border" style="height: 85vh;width: 90%;margin:auto">
+                <div id="header" style="text-align: center; margin-bottom: 4%">
+                  <a href="/" id="logoIndex1">Quentin-La-Brocante</a>
                 </div>
-            </fieldset>
+               <a href="test.xhtml" style="margin-left: 9.3%">Retour</a>
+                <div id="menuIndex" style="text-align: center; width: 80%" >
+                    <div style="height: 45vh;overflow: auto">
+                        <h3  style="width: 70.5%; margin: 2% 0% 0% 2.5%;">Prénom* :
+                            <span class='messageError'><h:message for="loginInput" styleClass="errorBlock" /></span>
+                        </h3>
+                        <h:inputText required="true" requiredMessage="La saisie de prénom est obligatoire !"
+                                     validatorMessage="Votre prénom doit contenir au minimum 2 caractères"
+                                     style="width: 70%;margin: 0% 15%" value="#{panierBean.prenom}"
+                                     id="loginInput">
+                            <f:validateLength minimum="2"/>
+                            #{panierBean.prenom}
+                        </h:inputText>
+                        <br/>
+                        <h3  style="width: 70.5%; margin: 2% 0% 0% 2.5%;">Nom* :
+                            <span class='messageError'><h:message for="nomInput" styleClass="errorBlock" /></span>
+                        </h3>
+                        <h:inputText required="true" requiredMessage="La saisie de nom est obligatoire !"
+                                     validatorMessage="Votre nom doit contenir au minimum 2 caractères"
+                                     style="width: 70%;margin: 0% 15%" value="#{panierBean.nom}"
+                                     id="nomInput">
+                            <f:validateLength minimum="2"/>
+                            #{panierBean.nom}
+                        </h:inputText>
+                        <br/>
+                        <h3  style="width: 70.5%; margin: 2% 0% 0% 2.5%;">Adresse complète* :
+                            <span class='messageError'><h:message for="adresseInput" styleClass="errorBlock" /></span>
+                        </h3>
+                        <h:inputText required="true" requiredMessage="La saisie de l'adresse est obligatoire !"
+                                     style="width: 70%;margin: 0% 15%" value="#{panierBean.adresse}"
+                                     id="adresseInput">#{panierBean.adresse}
+                        </h:inputText>
+                        <br/>
+                        <h3  style="width: 70.5%; margin: 2% 0% 0% 2.5%;">Code IBAN* :
+                            <span class='messageError'><h:message for="ibanInput" styleClass="errorBlock" /></span>
+                        </h3>
+                        <h:inputText required="true" requiredMessage="La saisie de le code IBAN est obligatoire !"
+                                     style="width: 70%;margin: 0% 15%" value="#{panierBean.iban}"
+                                     id="ibanInput">#{panierBean.iban}
+                        </h:inputText>
+                        <br/>
+                        <br/>
+                        <h:dataTable var="row" style="width: 100%;height: 10vh;overflow: auto"
+                                     value="#{panierBean.getArticles()}"
+                                         border="1" >
+                            <h:column>
+                                    <f:facet name="header">Article</f:facet>
+                                    #{row.name}
+                            </h:column>
+                            <h:column>
+                                    <f:facet name="header">Prix d'achat</f:facet>
+                                    #{listeArticleBean.findBestBet(row.id)}
+                            </h:column>
+                            <h:column>
+                                    <f:facet name="header">Livraison</f:facet>
+                                    #{promotionBean.getPromotionLivraison(row.id)}€
+                            </h:column>
+                            <h:column>
+                                    <f:facet name="header">Réduction</f:facet>
+                                    -#{promotionBean.getPromotionReduction(row.id)}€
+                            </h:column>
+                            <h:column>
+                                    <f:facet name="header">Prix final article</f:facet>
+                                    #{promotionBean.getPrixFinal(row.id)}€
+                            </h:column>
+                        </h:dataTable>
+                        <h3 class="FontBrocante" style="width: 100%;padding: 0">
+                            Votre panier Total : #{panierBean.getPrixPromotions()}€
+                        </h3>
+                        <h:commandButton class="buttonCompte" style="width: 70%;margin: 1% 15% 0% 15%;padding: 1%"
+                            value="Valider commande" action="#{panierBean.validerPanier()}"/>
+                        <div style="text-align: center;width: 100%">
+                            <span>* champ requis</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </h:form>
         <span style="position: absolute;right: 0;left: 0;text-align: center;padding-top: 10px">projet GLA 2020</span>
     </h:body>
