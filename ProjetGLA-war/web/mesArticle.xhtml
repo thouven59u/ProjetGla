@@ -32,6 +32,10 @@
                     </h:column>
                     <h:column>
                         <f:facet name="header">Description</f:facet>
+                        #{row.description}
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">Categorie</f:facet>
                         #{row.categorie}
                     </h:column>
                     <h:column>
@@ -54,7 +58,7 @@
                                     <f:attribute name="idRow" value="#{row.id}"></f:attribute>
                                 </h:inputText>
                                 <h:commandButton class="buttonCompte" style="font-size: 15px;width: 50%; float: left" rendered="#{listeArticleBean.verifier(row.auctionEnd)}" value="encherir" action="#{listeArticleBean.encherir(row.id)}"/>
-                                <h:commandButton class="buttonCompte" style="font-size: 15px; width: 50%; float: left" rendered="#{listeArticleBean.verifier(row.auctionEnd)}" value="annuler" action="#{listeArticleBean.annuler(row.id, false)}"/>
+                                <h:commandButton class="buttonCompte" style="font-size: 15px; width: 50%;" rendered="#{listeArticleBean.verifier(row.auctionEnd)}" value="annuler" action="#{listeArticleBean.annuler(row.id, false)}"/>
                         </h:form>                       
                     </h:column>
                     <h:column>

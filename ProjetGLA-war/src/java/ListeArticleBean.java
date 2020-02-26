@@ -155,7 +155,7 @@ public class ListeArticleBean {
     }
     
     public String toStringDate(Date d) throws ParseException{ 
-        DateFormat formatter = new SimpleDateFormat("dd/MM/yyy hh:mm");
+        DateFormat formatter = new SimpleDateFormat("dd/MM/yyy hh:mm a");
         return formatter.format(d);
     }
 }
