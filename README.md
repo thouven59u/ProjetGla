@@ -13,11 +13,14 @@ Gauthier BRIN - Quentin THOUVENOT - Julien BAILLY - Benoît HOLZER
 Rendez vous sur la console glassfish, par défaut http://localhost:4848 .
 
 Créez une JDBC Connection Pools :
+ ```
   Resources -> JDBC -> JDBC Connection Pools -> New
   Appelez la "GLAPool"
   Resource Type: javax.sql.DataSource
+ ```
   
   Additional Properties :
+  ```
     URL : jdbc.derby://localhost:1527/gla
     TraceFileAppend : false
     SecurityMechanism : 0
@@ -30,15 +33,16 @@ Créez une JDBC Connection Pools :
     TraceLevel : -1
     PortNumber : 1527
     Password : root
-
+```
 ---
 
 Créez une JDBC Resources :
+```
   Resources -> JDBC -> JDBC Resources -> New
   JNDI Name : jdbc/gla
   Pool Name : GLAPool
   Deployment Order : 100
-  
+  ```
 ---
 
 Créez les JMS Destination Resources :
