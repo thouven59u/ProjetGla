@@ -1,4 +1,4 @@
-### ProjetGLA
+# ProjetGLA
 
 Gauthier BRIN - Quentin THOUVENOT - Julien BAILLY - Benoît HOLZER
 
@@ -45,6 +45,7 @@ Créez les JMS Destination Resources :
   Resources -> Resources -> JMS Resources -> Destination Resources
   
   Il faut en créer 4 différents :
+  
     1)
     JNDI Name : jms/FacturationQueue
     Physical Destination Name : Facturation
@@ -72,8 +73,10 @@ Créez les JMS Destination Resources :
 Importez les sources fournis dans NetBeans.
 
 Clean&Build ProjetGLA-part2
+
 Run ProjetGLA-part2
 
 Clean&Build ProjetGLA
+
 Run ProjetGLA
 
